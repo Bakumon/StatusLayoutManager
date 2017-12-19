@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Library</string>
+    <string name="status_layout_manager_loading">加载中</string>
+    <string name="status_layout_manager_empty">暂时木有内容呀～～</string>
+    <string name="status_layout_manager_error">加载失败</string>
+    <string name="retry">点击重试</string>
+</resources>

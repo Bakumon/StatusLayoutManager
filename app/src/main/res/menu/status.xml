@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="me.bakumon.ugank.module.webview.WebViewActivity">
+    <item
+        android:id="@+id/menu_status_loading"
+        android:title="加载中"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_status_empty"
+        android:title="空数据"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_status_error"
+        android:title="出错"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_status_success"
+        android:title="加载成功"
+        app:showAsAction="never"/>
+</menu>
