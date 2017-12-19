@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 manager.showEmptyLayout();
                 break;
             case R.id.menu_status_error:
-                // 出错
+                // 加载失败
                 manager.showErrorLayout();
                 break;
             case R.id.menu_status_success:

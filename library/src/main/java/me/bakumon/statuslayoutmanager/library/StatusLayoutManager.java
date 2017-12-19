@@ -19,23 +19,39 @@ public class StatusLayoutManager {
     /**
      * 加载中 view
      */
+    @LayoutRes
+    private int loadingLayoutID;
     private View loadingLayout;
     /**
      * 空数据 view
      */
+    @LayoutRes
+    private int emptyLayoutID;
     private View emptyLayout;
+
     /**
      * 出错 view
      */
+    @LayoutRes
+    private int errorLayoutID;
     private View errorLayout;
+
+    private LayoutInflater inflater;
 
     private ReplaceLayoutHelper replaceLayoutHelper;
 
     private StatusLayoutManager(Builder builder) {
         this.contentLayout = builder.contentLayout;
+
+        this.loadingLayoutID = builder.loadingLayoutID;
         this.loadingLayout = builder.loadingLayout;
+
+        this.emptyLayoutID = builder.emptyLayoutID;
         this.emptyLayout = builder.emptyLayout;
+
+        this.errorLayoutID = builder.errorLayoutID;
         this.errorLayout = builder.errorLayout;
+
         replaceLayoutHelper = new ReplaceLayoutHelper(contentLayout);
     }
 
@@ -44,21 +60,40 @@ public class StatusLayoutManager {
     }
 
     public View getLoadingLayout() {
+        if (loadingLayout == null) {
+            loadingLayout = inflate(loadingLayoutID);
+        }
         return loadingLayout;
     }
 
     public View getEmptyLayout() {
+        if (emptyLayout == null) {
+            emptyLayout = inflate(emptyLayoutID);
+        }
         return emptyLayout;
     }
 
     public View getErrorLayout() {
+        if (errorLayout == null) {
+            errorLayout = inflate(errorLayoutID);
+        }
         return errorLayout;
+    }
+
+    private View inflate(@LayoutRes int resource) {
+        if (inflater == null) {
+            inflater = LayoutInflater.from(contentLayout.getContext());
+        }
+        return inflater.inflate(resource, null);
     }
 
     /**
      * 显示加载中布局
      */
     public void showLoadingLayout() {
+        if (loadingLayout == null) {
+            loadingLayout = inflate(loadingLayoutID);
+        }
         replaceLayoutHelper.showStatusLayout(loadingLayout);
     }
 
@@ -66,6 +101,9 @@ public class StatusLayoutManager {
      * 显示空数据布局
      */
     public void showEmptyLayout() {
+        if (emptyLayout == null) {
+            emptyLayout = inflate(emptyLayoutID);
+        }
         replaceLayoutHelper.showStatusLayout(emptyLayout);
     }
 
@@ -73,9 +111,15 @@ public class StatusLayoutManager {
      * 显示加载错误布局
      */
     public void showErrorLayout() {
+        if (errorLayout == null) {
+            errorLayout = inflate(errorLayoutID);
+        }
         replaceLayoutHelper.showStatusLayout(errorLayout);
     }
 
+    /**
+     * 显示原有布局
+     */
     public void showSuccessLayout() {
         replaceLayoutHelper.restoreLayout();
     }
@@ -83,25 +127,31 @@ public class StatusLayoutManager {
     public static final class Builder {
 
         private View contentLayout;
+
+        @LayoutRes
+        private int loadingLayoutID;
         private View loadingLayout;
+
+        @LayoutRes
+        private int emptyLayoutID;
         private View emptyLayout;
+
+        @LayoutRes
+        private int errorLayoutID;
         private View errorLayout;
 
-        private LayoutInflater inflater;
 
         public Builder(@NonNull View contentLayout) {
             this.contentLayout = contentLayout;
             // 设置默认布局
-            this.loadingLayout = inflate(R.layout.layout_status_layout_manager_loading);
-            this.emptyLayout = inflate(R.layout.layout_status_layout_manager_empty);
-            this.errorLayout = inflate(R.layout.layout_status_layout_manager_error);
+            this.loadingLayoutID = R.layout.layout_status_layout_manager_loading;
+            this.emptyLayoutID = R.layout.layout_status_layout_manager_empty;
+            this.errorLayoutID = R.layout.layout_status_layout_manager_error;
         }
 
-        private View inflate(@LayoutRes int resource) {
-            if (inflater == null) {
-                inflater = LayoutInflater.from(contentLayout.getContext());
-            }
-            return inflater.inflate(resource, null);
+        public Builder setLoadingLayout(@LayoutRes int loadingLayoutResId) {
+            this.loadingLayoutID = loadingLayoutResId;
+            return this;
         }
 
         public Builder setLoadingLayout(@NonNull View loadingLayout) {
@@ -109,28 +159,23 @@ public class StatusLayoutManager {
             return this;
         }
 
-        public Builder setLoadingLayout(@LayoutRes int loadingLayoutResId) {
-            this.loadingLayout = inflate(loadingLayoutResId);
+        public Builder setEmptyLayout(@LayoutRes int emptyLayoutResId) {
+            this.emptyLayoutID = emptyLayoutResId;
             return this;
         }
 
         public Builder setEmptyLayout(@NonNull View emptyLayout) {
-            this.errorLayout = emptyLayout;
+            this.emptyLayout = emptyLayout;
             return this;
         }
 
-        public Builder setEmptyLayout(@LayoutRes int emptyLayoutResId) {
-            this.emptyLayout = inflate(emptyLayoutResId);
+        public Builder setErrorLayout(@LayoutRes int errorLayoutResId) {
+            this.errorLayoutID = errorLayoutResId;
             return this;
         }
 
         public Builder setErrorLayout(@NonNull View errorLayout) {
             this.errorLayout = errorLayout;
-            return this;
-        }
-
-        public Builder setErrorLayout(@LayoutRes int errorLayoutResId) {
-            this.errorLayout = inflate(errorLayoutResId);
             return this;
         }
 
