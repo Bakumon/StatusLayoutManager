@@ -18,6 +18,7 @@
         android:text="@string/status_layout_manager_error" />
 
     <Button
+        android:id="@+id/bt_status_error_retry"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:background="@drawable/selector_retry" />

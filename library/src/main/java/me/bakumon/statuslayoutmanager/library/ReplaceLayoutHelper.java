@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 /**
  * 替换布局帮助类
  * https://bakumon.me
- * Created by Bakumon on 2017/12/18.
+ *
+ * @author Bakumon
+ * @date 2017/12/18
  */
 public class ReplaceLayoutHelper {
 
