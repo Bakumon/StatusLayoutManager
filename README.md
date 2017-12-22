@@ -27,7 +27,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.Bakumon:StatusLayoutManager:1.0.0'
+    compile 'com.github.Bakumon:StatusLayoutManager:1.0.1'
 }
 ```
 
@@ -40,10 +40,15 @@ dependencies {
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     // 设置重试事件监听器
-    .setOnRetryListener(new OnRetryListener() {
+    .setOnStatusChildClickListener(new DefaultOnStatusChildClickListener() {
         @Override
-        public void onClick(int state, View view) {
-            // 处理点击事件，一般重新加载数据
+        public void onEmptyChildClick(View view) {
+
+        }
+
+        @Override
+        public void onErrorChildClick(View view) {
+
         }
     })
     .build();
@@ -164,6 +169,25 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
             public void onCustomerChildClick(View view) {
 
             }
+        }
+    })
+    .build();
+```
+
+也可以使用 `OnStatusLayoutClickListener` 默认的实现类，像下面这样：
+
+```java
+statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
+    // 设置重试事件监听器
+    .setOnStatusChildClickListener(new DefaultOnStatusChildClickListener() {
+        @Override
+        public void onEmptyChildClick(View view) {
+
+        }
+
+        @Override
+        public void onErrorChildClick(View view) {
+
         }
     })
     .build();
