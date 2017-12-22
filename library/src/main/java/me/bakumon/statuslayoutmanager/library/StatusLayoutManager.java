@@ -29,26 +29,26 @@ public class StatusLayoutManager {
     private String loadingText;
 
     @IdRes
-    private int emptyRetryViewId;
+    private int emptyClickViewId;
     @LayoutRes
     private int emptyLayoutID;
     private View emptyLayout;
     private String emptyText;
-    private String emptyRetryText;
-    private int emptyRetryTextColor;
-    private boolean isEmptyRetryVisible;
+    private String emptyClickViewText;
+    private int emptyClickViewTextColor;
+    private boolean isEmptyClickViewVisible;
     @DrawableRes
     private int emptyImgID;
 
     @IdRes
-    private int errorRetryViewId;
+    private int errorClickViewId;
     @LayoutRes
     private int errorLayoutID;
     private View errorLayout;
     private String errorText;
-    private String errorRetryText;
-    private int errorRetryTextColor;
-    private boolean isErrorRetryVisible;
+    private String errorClickViewText;
+    private int errorClickViewTextColor;
+    private boolean isErrorClickViewVisible;
     @DrawableRes
     private int errorImgID;
 
@@ -67,22 +67,22 @@ public class StatusLayoutManager {
         this.loadingLayout = builder.loadingLayout;
         this.loadingText = builder.loadingText;
 
-        this.emptyRetryViewId = builder.emptyRetryViewId;
+        this.emptyClickViewId = builder.emptyClickViewId;
         this.emptyLayoutID = builder.emptyLayoutID;
         this.emptyLayout = builder.emptyLayout;
         this.emptyText = builder.emptyText;
-        this.emptyRetryText = builder.emptyRetryText;
-        this.emptyRetryTextColor = builder.emptyRetryTextColor;
-        this.isEmptyRetryVisible = builder.isEmptyRetryVisible;
+        this.emptyClickViewText = builder.emptyClickViewText;
+        this.emptyClickViewTextColor = builder.emptyClickViewTextColor;
+        this.isEmptyClickViewVisible = builder.isEmptyClickViewVisible;
         this.emptyImgID = builder.emptyImgID;
 
-        this.errorRetryViewId = builder.errorRetryViewId;
+        this.errorClickViewId = builder.errorClickViewId;
         this.errorLayoutID = builder.errorLayoutID;
         this.errorLayout = builder.errorLayout;
         this.errorText = builder.errorText;
-        this.errorRetryText = builder.errorRetryText;
-        this.errorRetryTextColor = builder.errorRetryTextColor;
-        this.isErrorRetryVisible = builder.isErrorRetryVisible;
+        this.errorClickViewText = builder.errorClickViewText;
+        this.errorClickViewTextColor = builder.errorClickViewTextColor;
+        this.isErrorClickViewVisible = builder.isErrorClickViewVisible;
         this.errorImgID = builder.errorImgID;
 
         this.defaultBackgroundColor = builder.defaultBackgroundColor;
@@ -165,7 +165,7 @@ public class StatusLayoutManager {
             return;
         }
 
-        View view = emptyLayout.findViewById(emptyRetryViewId);
+        View view = emptyLayout.findViewById(emptyClickViewId);
         if (view == null) {
             return;
         }
@@ -194,19 +194,19 @@ public class StatusLayoutManager {
             }
         }
 
-        TextView emptyRetryTextView = emptyLayout.findViewById(R.id.bt_status_empty_retry);
-        if (emptyRetryTextView == null) {
+        TextView emptyClickViewTextView = emptyLayout.findViewById(R.id.bt_status_empty_click);
+        if (emptyClickViewTextView == null) {
             return;
         }
         // 设置重试按钮的文本和可见性
-        if (isEmptyRetryVisible) {
-            emptyRetryTextView.setVisibility(View.VISIBLE);
-            if (!TextUtils.isEmpty(emptyRetryText)) {
-                emptyRetryTextView.setText(emptyRetryText);
+        if (isEmptyClickViewVisible) {
+            emptyClickViewTextView.setVisibility(View.VISIBLE);
+            if (!TextUtils.isEmpty(emptyClickViewText)) {
+                emptyClickViewTextView.setText(emptyClickViewText);
             }
-            emptyRetryTextView.setTextColor(emptyRetryTextColor);
+            emptyClickViewTextView.setTextColor(emptyClickViewTextColor);
         } else {
-            emptyRetryTextView.setVisibility(View.GONE);
+            emptyClickViewTextView.setVisibility(View.GONE);
         }
     }
 
@@ -245,7 +245,7 @@ public class StatusLayoutManager {
             return;
         }
 
-        View view = errorLayout.findViewById(errorRetryViewId);
+        View view = errorLayout.findViewById(errorClickViewId);
         if (view == null) {
             return;
         }
@@ -274,19 +274,19 @@ public class StatusLayoutManager {
             }
         }
 
-        TextView errorRetryTextView = errorLayout.findViewById(R.id.bt_status_error_retry);
-        if (errorRetryTextView == null) {
+        TextView errorClickViewTextView = errorLayout.findViewById(R.id.bt_status_error_click);
+        if (errorClickViewTextView == null) {
             return;
         }
         // 设置重试按钮的文本和可见性
-        if (isErrorRetryVisible) {
-            errorRetryTextView.setVisibility(View.VISIBLE);
-            if (!TextUtils.isEmpty(errorRetryText)) {
-                errorRetryTextView.setText(errorRetryText);
+        if (isErrorClickViewVisible) {
+            errorClickViewTextView.setVisibility(View.VISIBLE);
+            if (!TextUtils.isEmpty(errorClickViewText)) {
+                errorClickViewTextView.setText(errorClickViewText);
             }
-            errorRetryTextView.setTextColor(errorRetryTextColor);
+            errorClickViewTextView.setTextColor(errorClickViewTextColor);
         } else {
-            errorRetryTextView.setVisibility(View.GONE);
+            errorClickViewTextView.setVisibility(View.GONE);
         }
     }
 
@@ -337,22 +337,22 @@ public class StatusLayoutManager {
      * 显示自定义状态布局
      *
      * @param customLayout 自定义布局
-     * @param retryID      重试按钮 ID
+     * @param clickViewID  可点击 View ID
      */
-    public void showCustomLayout(@NonNull View customLayout, @IdRes int... retryID) {
+    public void showCustomLayout(@NonNull View customLayout, @IdRes int... clickViewID) {
         replaceLayoutHelper.showStatusLayout(customLayout);
         if (onStatusChildClickListener == null) {
             return;
         }
 
-        for (int aRetryID : retryID) {
-            View retryView = customLayout.findViewById(aRetryID);
-            if (retryView == null) {
+        for (int aClickViewID : clickViewID) {
+            View clickView = customLayout.findViewById(aClickViewID);
+            if (clickView == null) {
                 return;
             }
 
             // 设置重试按钮点击时事件回调
-            retryView.setOnClickListener(new View.OnClickListener() {
+            clickView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     onStatusChildClickListener.onCustomerChildClick(view);
@@ -365,11 +365,11 @@ public class StatusLayoutManager {
      * 显示自定义状态布局
      *
      * @param customLayoutID 自定义布局 ID
-     * @param retryID        重试按钮 ID
+     * @param clickViewID    重试按钮 ID
      */
-    public View showCustomLayout(@LayoutRes int customLayoutID, @IdRes int... retryID) {
+    public View showCustomLayout(@LayoutRes int customLayoutID, @IdRes int... clickViewID) {
         View customLayout = inflate(customLayoutID);
-        showCustomLayout(customLayout, retryID);
+        showCustomLayout(customLayout, clickViewID);
         return customLayout;
     }
 
@@ -383,26 +383,26 @@ public class StatusLayoutManager {
         private String loadingText;
 
         @IdRes
-        private int emptyRetryViewId;
+        private int emptyClickViewId;
         @LayoutRes
         private int emptyLayoutID;
         private View emptyLayout;
         private String emptyText;
-        private String emptyRetryText;
-        private int emptyRetryTextColor;
-        private boolean isEmptyRetryVisible;
+        private String emptyClickViewText;
+        private int emptyClickViewTextColor;
+        private boolean isEmptyClickViewVisible;
         @DrawableRes
         private int emptyImgID;
 
         @IdRes
-        private int errorRetryViewId;
+        private int errorClickViewId;
         @LayoutRes
         private int errorLayoutID;
         private View errorLayout;
         private String errorText;
-        private String errorRetryText;
-        private int errorRetryTextColor;
-        private boolean isErrorRetryVisible;
+        private String errorClickViewText;
+        private int errorClickViewTextColor;
+        private boolean isErrorClickViewVisible;
         @DrawableRes
         private int errorImgID;
 
@@ -422,13 +422,13 @@ public class StatusLayoutManager {
             this.emptyLayoutID = R.layout.layout_status_layout_manager_empty;
             this.errorLayoutID = R.layout.layout_status_layout_manager_error;
             // 设置默认重试点击view id
-            this.emptyRetryViewId = R.id.bt_status_empty_retry;
-            this.errorRetryViewId = R.id.bt_status_error_retry;
+            this.emptyClickViewId = R.id.bt_status_empty_click;
+            this.errorClickViewId = R.id.bt_status_error_click;
             // 设置默认重试按钮属性
-            this.isEmptyRetryVisible = true;
-            this.emptyRetryTextColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_retry_text_color);
-            this.isErrorRetryVisible = true;
-            this.errorRetryTextColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_retry_text_color);
+            this.isEmptyClickViewVisible = true;
+            this.emptyClickViewTextColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_click_view_text_color);
+            this.isErrorClickViewVisible = true;
+            this.errorClickViewTextColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_click_view_text_color);
             // 设置默认背景色
             this.defaultBackgroundColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_background_color);
         }
@@ -511,55 +511,55 @@ public class StatusLayoutManager {
         /**
          * 设置空数据布局重试按钮 ID
          *
-         * @param emptyRetryResId 空数据布局重试按钮 ID
+         * @param emptyClickViewResId 空数据布局重试按钮 ID
          * @return 状态布局 Build 对象
          */
-        public Builder setEmptyRetryID(@IdRes int emptyRetryResId) {
-            this.emptyRetryViewId = emptyRetryResId;
+        public Builder setEmptyClickViewID(@IdRes int emptyClickViewResId) {
+            this.emptyClickViewId = emptyClickViewResId;
             return this;
         }
 
         /**
          * 设置默认空数据布局重试按钮文本
          *
-         * @param emptyRetryText 重试按钮文本
+         * @param emptyClickViewText 重试按钮文本
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultEmptyRetryText(String emptyRetryText) {
-            this.emptyRetryText = emptyRetryText;
+        public Builder setDefaultEmptyClickViewText(String emptyClickViewText) {
+            this.emptyClickViewText = emptyClickViewText;
             return this;
         }
 
         /**
          * 设置默认空数据布局重试按钮文本
          *
-         * @param emptyRetryTextID 重试按钮文本 ID
+         * @param emptyClickViewTextID 重试按钮文本 ID
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultEmptyRetryText(@StringRes int emptyRetryTextID) {
-            this.emptyRetryText = contentLayout.getContext().getResources().getString(emptyRetryTextID);
+        public Builder setDefaultEmptyClickViewText(@StringRes int emptyClickViewTextID) {
+            this.emptyClickViewText = contentLayout.getContext().getResources().getString(emptyClickViewTextID);
             return this;
         }
 
         /**
          * 设置默认空数据布局重试按钮文本颜色
          *
-         * @param emptyRetryTextColor 重试按钮文本颜色
+         * @param emptyClickViewTextColor 重试按钮文本颜色
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultEmptyRetryTextColor(int emptyRetryTextColor) {
-            this.emptyRetryTextColor = emptyRetryTextColor;
+        public Builder setDefaultEmptyClickViewTextColor(int emptyClickViewTextColor) {
+            this.emptyClickViewTextColor = emptyClickViewTextColor;
             return this;
         }
 
         /**
          * 设置默认空数据布局重试按钮是否可见
          *
-         * @param isEmptyRetryVisible true：可见 false：不可见
+         * @param isEmptyClickViewVisible true：可见 false：不可见
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultEmptyRetryVisible(boolean isEmptyRetryVisible) {
-            this.isEmptyRetryVisible = isEmptyRetryVisible;
+        public Builder setDefaultEmptyClickViewVisible(boolean isEmptyClickViewVisible) {
+            this.isEmptyClickViewVisible = isEmptyClickViewVisible;
             return this;
         }
 
@@ -626,11 +626,11 @@ public class StatusLayoutManager {
         /**
          * 设置出错布局重试按钮 ID
          *
-         * @param errorRetryResId 出错布局重试按钮 ID
+         * @param errorClickViewResId 出错布局重试按钮 ID
          * @return 状态布局 Build 对象
          */
-        public Builder setErrorRetryID(@IdRes int errorRetryResId) {
-            this.errorRetryViewId = errorRetryResId;
+        public Builder setErrorClickViewID(@IdRes int errorClickViewResId) {
+            this.errorClickViewId = errorClickViewResId;
             return this;
         }
 
@@ -659,44 +659,44 @@ public class StatusLayoutManager {
         /**
          * 设置默认出错布局重试按钮文本
          *
-         * @param errorRetryText 重试按钮文本
+         * @param errorClickViewText 重试按钮文本
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultErrorRetryText(String errorRetryText) {
-            this.errorRetryText = errorRetryText;
+        public Builder setDefaultErrorClickViewText(String errorClickViewText) {
+            this.errorClickViewText = errorClickViewText;
             return this;
         }
 
         /**
          * 设置默认出错布局重试按钮文本
          *
-         * @param errorRetryTextID 重试按钮文本 ID
+         * @param errorClickViewTextID 重试按钮文本 ID
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultErrorRetryText(@StringRes int errorRetryTextID) {
-            this.errorRetryText = contentLayout.getContext().getResources().getString(errorRetryTextID);
+        public Builder setDefaultErrorClickViewText(@StringRes int errorClickViewTextID) {
+            this.errorClickViewText = contentLayout.getContext().getResources().getString(errorClickViewTextID);
             return this;
         }
 
         /**
          * 设置默认出错布局重试按钮文本颜色
          *
-         * @param errorRetryTextColor 重试按钮文本颜色
+         * @param errorClickViewTextColor 重试按钮文本颜色
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultErrorRetryTextColor(int errorRetryTextColor) {
-            this.errorRetryTextColor = errorRetryTextColor;
+        public Builder setDefaultErrorClickViewTextColor(int errorClickViewTextColor) {
+            this.errorClickViewTextColor = errorClickViewTextColor;
             return this;
         }
 
         /**
          * 设置出错布局重试按钮可见行
          *
-         * @param isErrorRetryVisible true：可见 false：不可见
+         * @param isErrorClickViewVisible true：可见 false：不可见
          * @return 状态布局 Build 对象
          */
-        public Builder setDefaultErrorRetryVisible(boolean isErrorRetryVisible) {
-            this.isErrorRetryVisible = isErrorRetryVisible;
+        public Builder setDefaultErrorClickViewVisible(boolean isErrorClickViewVisible) {
+            this.isErrorClickViewVisible = isErrorClickViewVisible;
             return this;
         }
 

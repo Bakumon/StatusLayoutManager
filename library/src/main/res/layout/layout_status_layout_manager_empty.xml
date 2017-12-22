@@ -23,14 +23,14 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/bt_status_empty_retry"
+        android:id="@+id/bt_status_empty_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/status_layout_manager_retry"
-        android:textColor="@color/status_layout_retry_text_color"
+        android:textColor="@color/status_layout_click_view_text_color"
         android:textSize="13sp"
         android:textStyle="bold" />
 </LinearLayout>

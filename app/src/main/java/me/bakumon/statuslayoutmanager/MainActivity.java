@@ -1,5 +1,6 @@
 package me.bakumon.statuslayoutmanager;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
@@ -51,29 +52,29 @@ public class MainActivity extends AppCompatActivity {
                 // 设置默认布局属性
 //                .setDefaultEmptyText("空白了，哈哈哈哈")
 //                .setDefaultEmptyImg(R.mipmap.ic_launcher)
-//                .setDefaultEmptyRetryText("retry")
-//                .setDefaultEmptyRetryTextColor(getResources().getColor(R.color.colorAccent))
-//                .setDefaultEmptyRetryVisible(false)
+//                .setDefaultEmptyClickViewText("retry")
+//                .setDefaultEmptyClickViewTextColor(getResources().getColor(R.color.colorAccent))
+//                .setDefaultEmptyClickViewVisible(false)
 //
 //                .setDefaultErrorText(R.string.app_name)
 //                .setDefaultErrorImg(R.mipmap.ic_launcher)
-//                .setDefaultErrorRetryText("重试一波")
-//                .setDefaultErrorRetryTextColor(getResources().getColor(R.color.colorPrimaryDark))
-//                .setDefaultErrorRetryVisible(true)
-
+//                .setDefaultErrorClickViewText("重试一波")
+//                .setDefaultErrorClickViewTextColor(getResources().getColor(R.color.colorPrimaryDark))
+//                .setDefaultErrorClickViewVisible(true)
+//
 //                .setDefaultLayoutsBackgroundColor(Color.WHITE)
 
                 // 自定义布局
 //                .setLoadingLayout(inflate(R.layout.layout_loading))
 //                .setEmptyLayout(inflate(R.layout.layout_empty))
 //                .setErrorLayout(inflate(R.layout.layout_error))
-
+//
 //                .setLoadingLayout(R.layout.layout_loading)
 //                .setEmptyLayout(R.layout.layout_empty)
 //                .setErrorLayout(R.layout.layout_error)
 //
-//                .setEmptyRetryID(R.id.tv_empty)
-//                .setErrorRetryID(R.id.tv_error)
+//                .setEmptyClickViewID(R.id.tv_empty)
+//                .setErrorClickViewID(R.id.tv_error)
 
                 // 设置重试事件监听器
                 .setOnStatusChildClickListener(new OnStatusChildClickListener() {
