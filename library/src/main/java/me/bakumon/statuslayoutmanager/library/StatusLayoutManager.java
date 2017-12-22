@@ -41,7 +41,7 @@ public class StatusLayoutManager {
     /**
      * 当前状态为自定义布局状态
      */
-    public static final int STATE_CUSTOMER = 2;
+    public static final int STATE_CUSTOMER = -1;
 
     private View contentLayout;
 
@@ -361,23 +361,26 @@ public class StatusLayoutManager {
      * @param customLayout 自定义布局
      * @param retryID      重试按钮 ID
      */
-    public void showCustomLayout(@NonNull View customLayout, @IdRes int retryID) {
+    public void showCustomLayout(@NonNull View customLayout, @IdRes int... retryID) {
         replaceLayoutHelper.showStatusLayout(customLayout);
         if (onRetryListener == null) {
             return;
         }
-        View retryView = customLayout.findViewById(retryID);
-        if (retryView == null) {
-            return;
-        }
 
-        // 设置重试按钮点击时事件回调
-        retryView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onRetryListener.onClick(STATE_CUSTOMER, view);
+        for (int aRetryID : retryID) {
+            View retryView = customLayout.findViewById(aRetryID);
+            if (retryView == null) {
+                return;
             }
-        });
+
+            // 设置重试按钮点击时事件回调
+            retryView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onRetryListener.onClick(STATE_CUSTOMER, view);
+                }
+            });
+        }
     }
 
     /**
@@ -386,7 +389,7 @@ public class StatusLayoutManager {
      * @param customLayoutID 自定义布局 ID
      * @param retryID        重试按钮 ID
      */
-    public View showCustomLayout(@LayoutRes int customLayoutID, @IdRes int retryID) {
+    public View showCustomLayout(@LayoutRes int customLayoutID, @IdRes int... retryID) {
         View customLayout = inflate(customLayoutID);
         showCustomLayout(customLayout, retryID);
         return customLayout;

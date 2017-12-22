@@ -2,16 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/status_layout_background_color"
     android:gravity="center"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_network_error" />
+
     <TextView
-        android:id="@+id/tv_customer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawablePadding="10dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="自定义布局"
-        android:textColor="#ff0000"
-        android:textSize="30sp" />
+        android:lineSpacingMultiplier="1.2"
+        android:text="对不起\n您暂时没有权限查看"
+        android:textColor="#BEBEBE"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/selector_btn_blue"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="申请权限"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_customer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_blue"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="切换账号"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
 </LinearLayout>

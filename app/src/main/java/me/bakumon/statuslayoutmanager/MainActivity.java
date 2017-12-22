@@ -4,10 +4,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,21 +18,53 @@ import me.bakumon.statuslayoutmanager.library.OnRetryListener;
 import me.bakumon.statuslayoutmanager.library.StatusLayoutManager;
 
 /**
- * @author Bakumon
+ * 示例界面
+ *
+ * @author Bakumon https://bakumon.me
+ * @date 2017/12/22
  */
 public class MainActivity extends AppCompatActivity {
 
     private StatusLayoutManager statusLayoutManager;
     private LayoutInflater inflater;
 
+    private RecyclerView recyclerView;
+    private LinearLayout llRoot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView contextView = findViewById(R.id.textview);
+        llRoot = findViewById(R.id.ll_root);
+        recyclerView = findViewById(R.id.rv_content);
 
-        statusLayoutManager = new StatusLayoutManager.Builder(contextView)
+        setupRecyclerView();
+
+        setupStatusLayoutManager();
+
+        statusLayoutManager.showLoadingLayout();
+        getData(1500);
+    }
+
+    private void setupStatusLayoutManager() {
+        statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
+
+                // 设置默认布局属性
+//                .setDefaultEmptyText("空白了，哈哈哈哈")
+//                .setDefaultEmptyImg(R.mipmap.ic_launcher)
+//                .setDefaultEmptyRetryText("retry")
+//                .setDefaultEmptyRetryTextColor(getResources().getColor(R.color.colorAccent))
+//                .setDefaultEmptyRetryVisible(false)
+//
+//                .setDefaultErrorText(R.string.app_name)
+//                .setDefaultErrorImg(R.mipmap.ic_launcher)
+//                .setDefaultErrorRetryText("重试一波")
+//                .setDefaultErrorRetryTextColor(getResources().getColor(R.color.colorPrimaryDark))
+//                .setDefaultErrorRetryVisible(true)
+
+//                .setDefaultLayoutsBackgroundColor(Color.WHITE)
+
                 // 自定义布局
 //                .setLoadingLayout(inflate(R.layout.layout_loading))
 //                .setEmptyLayout(inflate(R.layout.layout_empty))
@@ -38,31 +73,46 @@ public class MainActivity extends AppCompatActivity {
 //                .setLoadingLayout(R.layout.layout_loading)
 //                .setEmptyLayout(R.layout.layout_empty)
 //                .setErrorLayout(R.layout.layout_error)
-
+//
 //                .setEmptyRetryID(R.id.tv_empty)
 //                .setErrorRetryID(R.id.tv_error)
 
-//                .setDefaultEmptyText("空白了，哈哈哈哈")
-//                .setDefaultEmptyImg(R.mipmap.ic_launcher)
-//                .setDefaultErrorImg(R.mipmap.ic_launcher)
-//                .setDefaultErrorText(R.string.app_name)
-//                .setDefaultEmptyRetryText("retry")
-//                .setDefaultEmptyRetryTextColor(getResources().getColor(R.color.colorAccent))
-                .setDefaultEmptyRetryVisible(false)
-
-                .setDefaultErrorRetryText("重试一波")
-                .setDefaultErrorRetryTextColor(getResources().getColor(R.color.colorAccent))
-                .setDefaultErrorRetryVisible(true)
-
-                .setDefaultLayoutsBackgroundColor(Color.WHITE)
-
+                // 设置重试事件监听器
                 .setOnRetryListener(new OnRetryListener() {
                     @Override
                     public void onClick(int state, View view) {
-                        Toast.makeText(MainActivity.this, "state=" + state + ",id=" + view.getId(), Toast.LENGTH_SHORT).show();
+                        if (state == StatusLayoutManager.STATE_EMPTY) {
+                            ToastUtils.show(MainActivity.this, "空数据状态布局");
+                            statusLayoutManager.showLoadingLayout();
+                            getData(1000);
+                        } else if (state == StatusLayoutManager.STATE_ERROR) {
+                            ToastUtils.show(MainActivity.this, "出错状态布局");
+                            statusLayoutManager.showLoadingLayout();
+                            getData(1000);
+                        } else {
+                            if (view.getId() == R.id.tv_customer) {
+                                Toast.makeText(MainActivity.this, "申请权限", Toast.LENGTH_SHORT).show();
+                            } else if (view.getId() == R.id.tv_customer1) {
+                                Toast.makeText(MainActivity.this, "切换账号", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
                 })
                 .build();
+    }
+
+    private void setupRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+    }
+
+    private void getData(long time) {
+        llRoot.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recyclerView.setAdapter(new SimpleRecyclerViewAdapter());
+                statusLayoutManager.showSuccessLayout();
+            }
+        }, time);
     }
 
     private View inflate(@LayoutRes int resource) {
@@ -99,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.menu_status_customer:
                 // 自定义状态布局
-                statusLayoutManager.showCustomLayout(R.layout.layout_custome);
+                statusLayoutManager.showCustomLayout(R.layout.layout_custome, R.id.tv_customer, R.id.tv_customer1);
                 break;
             default:
                 break;
