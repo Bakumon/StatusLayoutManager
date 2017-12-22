@@ -1,5 +1,6 @@
 package me.bakumon.statuslayoutmanager;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import me.bakumon.statuslayoutmanager.library.StatusLayoutManager;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private StatusLayoutManager manager;
+    private StatusLayoutManager statusLayoutManager;
     private LayoutInflater inflater;
 
     @Override
@@ -26,31 +27,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView lLRoot = findViewById(R.id.textview);
+        TextView contextView = findViewById(R.id.textview);
 
-        manager = new StatusLayoutManager.Builder(lLRoot)
+        statusLayoutManager = new StatusLayoutManager.Builder(contextView)
                 // 自定义布局
 //                .setLoadingLayout(inflate(R.layout.layout_loading))
 //                .setEmptyLayout(inflate(R.layout.layout_empty))
 //                .setErrorLayout(inflate(R.layout.layout_error))
 
-                .setLoadingLayout(R.layout.layout_loading)
+//                .setLoadingLayout(R.layout.layout_loading)
 //                .setEmptyLayout(R.layout.layout_empty)
-                .setErrorLayout(R.layout.layout_error)
+//                .setErrorLayout(R.layout.layout_error)
+
 //                .setEmptyRetryID(R.id.tv_empty)
-                .setErrorRetryID(R.id.tv_error)
+//                .setErrorRetryID(R.id.tv_error)
+
+//                .setDefaultEmptyText("空白了，哈哈哈哈")
+//                .setDefaultEmptyImg(R.mipmap.ic_launcher)
+//                .setDefaultErrorImg(R.mipmap.ic_launcher)
+//                .setDefaultErrorText(R.string.app_name)
+//                .setDefaultEmptyRetryText("retry")
+//                .setDefaultEmptyRetryTextColor(getResources().getColor(R.color.colorAccent))
+                .setDefaultEmptyRetryVisible(false)
+
+                .setDefaultErrorRetryText("重试一波")
+                .setDefaultErrorRetryTextColor(getResources().getColor(R.color.colorAccent))
+                .setDefaultErrorRetryVisible(true)
+
+                .setDefaultLayoutsBackgroundColor(Color.WHITE)
+
                 .setOnRetryListener(new OnRetryListener() {
                     @Override
-                    public void onClick(View view, int state) {
-                        String stateStr;
-                        if (state == StatusLayoutManager.STATE_EMPTY) {
-                            stateStr = "空数据状态";
-                        } else if (state == StatusLayoutManager.STATE_ERROR) {
-                            stateStr = "出错状态";
-                        } else {
-                            stateStr = "其他状态";
-                        }
-                        Toast.makeText(MainActivity.this, "state=" + stateStr + ",id=" + view.getId(), Toast.LENGTH_SHORT).show();
+                    public void onClick(int state, View view) {
+                        Toast.makeText(MainActivity.this, "state=" + state + ",id=" + view.getId(), Toast.LENGTH_SHORT).show();
                     }
                 })
                 .build();
@@ -74,23 +83,23 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_status_loading:
                 // 加载中
-                manager.showLoadingLayout();
+                statusLayoutManager.showLoadingLayout();
                 break;
             case R.id.menu_status_empty:
                 // 空数据
-                manager.showEmptyLayout();
+                statusLayoutManager.showEmptyLayout();
                 break;
             case R.id.menu_status_error:
                 // 加载失败
-                manager.showErrorLayout();
+                statusLayoutManager.showErrorLayout();
                 break;
             case R.id.menu_status_success:
-                // 加载成功
-                manager.showSuccessLayout();
+                // 加载成功，显示原布局
+                statusLayoutManager.showSuccessLayout();
                 break;
             case R.id.menu_status_customer:
                 // 自定义状态布局
-                manager.showCustomLayout(R.layout.layout_custome);
+                statusLayoutManager.showCustomLayout(R.layout.layout_custome);
                 break;
             default:
                 break;

@@ -62,6 +62,9 @@ public class ReplaceLayoutHelper {
 
     public boolean showStatusLayout(View view) {
         // 如果当前显示的布局不是 view，才进行替换
+        if (view == null) {
+            return false;
+        }
         if (currentLayout != view) {
             currentLayout = view;
             ViewGroup parent = (ViewGroup) view.getParent();
