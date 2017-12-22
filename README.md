@@ -16,10 +16,10 @@
 
 ```
 allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+	    ...
+	    maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
@@ -28,6 +28,143 @@ allprojects {
 ```
 dependencies {
     compile 'com.github.Bakumon:StatusLayoutManager:-SNAPSHOT'
-    }
+}
 ```
 
+## 使用
+
+### 快速使用
+
+创建 `StatusLayoutManager` 对象:
+
+```java
+statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
+    // 设置重试事件监听器
+    .setOnRetryListener(new OnRetryListener() {
+        @Override
+        public void onClick(int state, View view) {
+            // 处理点击事件，一般重新加载数据
+        }
+    })
+    .build();
+```
+
+在合适的时机显示对应的状态布局：
+
+```java
+// 加载中
+statusLayoutManager.showLoadingLayout();
+// 空数据
+statusLayoutManager.showEmptyLayout();
+// 加载失败
+statusLayoutManager.showErrorLayout();
+// 加载成功，显示原布局
+statusLayoutManager.showSuccessLayout();
+```
+
+以上可以满足大多数场景。
+
+### 配置默认布局
+
+以下 API 提供修改默认布局的方法，具体说明见注释。
+
+```java
+statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
+
+    // 设置默认加载中布局的提示文本
+    .setDefaultLoadingText("l拼命加载中...")
+
+    // 设置默认空数据布局的提示文本
+    .setDefaultEmptyText("空白了，哈哈哈哈")
+    // 设置默认空数据布局的图片
+    .setDefaultEmptyImg(R.mipmap.ic_launcher)
+    // 设置默认空数据布局重试按钮的文本
+    .setDefaultEmptyRetryText("retry")
+    // 设置默认空数据布局重试按钮的文本颜色
+    .setDefaultEmptyRetryTextColor(getResources().getColor(R.color.colorAccent))
+    // 设置默认空数据布局重试按钮是否显示
+    .setDefaultEmptyRetryVisible(false)
+
+    // 设置默认出错布局的提示文本
+    .setDefaultErrorText(R.string.app_name)
+    // 设置默认出错布局的图片
+    .setDefaultErrorImg(R.mipmap.ic_launcher)
+    // 设置默认出错布局重试按钮的文本
+    .setDefaultErrorRetryText("重试一波")
+    // 设置默认出错布局重试按钮的文本颜色
+    .setDefaultErrorRetryTextColor(getResources().getColor(R.color.colorPrimaryDark))
+    // 设置默认出错布局重试按钮是否显示
+    .setDefaultErrorRetryVisible(true)
+
+    // 设置布局背景，包括加载中、空数据和出错布局
+    .setDefaultLayoutsBackgroundColor(Color.WHITE)
+    .build();
+```
+
+## 自定义默认布局
+
+```java
+statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
+    // 设置加载中布局
+    .setLoadingLayout(inflate(R.layout.layout_loading))
+    // 设置空数据布局
+    .setEmptyLayout(inflate(R.layout.layout_empty))
+    // 设置出错布局
+    .setErrorLayout(inflate(R.layout.layout_error))
+
+    // 设置加载中布局
+    .setLoadingLayout(R.layout.layout_loading)
+    // 设置空数据布局
+    .setEmptyLayout(R.layout.layout_empty)
+    // 设置出错布局
+    .setErrorLayout(R.layout.layout_error)
+
+    // 设置空数据布局重试按钮 ID
+    .setEmptyRetryID(R.id.tv_empty)
+    // 设置出错布局重试按钮 ID
+    .setErrorRetryID(R.id.tv_error)
+    .build();
+```
+
+## 显示自定义状态布局
+
+`statusLayoutManager()`有几个重载方法，下面以参数多的为例介绍：
+
+```java
+/**
+ * 显示自定义状态布局
+ *
+ * @param customLayoutID 自定义布局 ID
+ * @param retryID        重试按钮 ID
+ * @return 自定义状态布局
+ */
+statusLayoutManager.showCustomLayout(R.layout.layout_custome, R.id.tv_customer, R.id.tv_customer1);
+```
+
+其中 `retryID` 参数，表示想要添加点击事件的 View 的 id。
+
+## 点击监听
+
+```java
+statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
+
+    // 设置重试事件监听器
+    .setOnStatusLayoutClickListener(new OnStatusLayoutClickListener() {
+            @Override
+            public void onEmptyChildClick(View view) {
+
+            }
+
+            @Override
+            public void onErrorChildClick(View view) {
+
+            }
+
+            @Override
+            public void onCustomerChildClick(View view) {
+
+            }
+        }
+    })
+    .build();
+```
