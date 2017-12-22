@@ -11,13 +11,6 @@ import android.view.View;
  */
 
 public interface OnStatusChildClickListener {
-//    /**
-//     * 状态布局中重试按钮的点击事件
-//     *
-//     * @param state 布局状态
-//     * @param view  重试 view
-//     */
-//    void onClick(@StatusLayoutManager.LAYOUT_STATE int state, View view);
 
     /**
      * 空数据布局子 View 被点击
