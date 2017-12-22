@@ -2,7 +2,6 @@ package me.bakumon.statuslayoutmanager.library;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
-import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -11,9 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 /**
  * 状态布局管理器
@@ -24,24 +20,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 
 public class StatusLayoutManager {
-
-    @IntDef({STATE_EMPTY, STATE_ERROR, STATE_CUSTOMER})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface LAYOUT_STATE {
-    }
-
-    /**
-     * 当前状态为空数据状态
-     */
-    public static final int STATE_EMPTY = 0;
-    /**
-     * 当前状态为出错状态
-     */
-    public static final int STATE_ERROR = 1;
-    /**
-     * 当前状态为自定义布局状态
-     */
-    public static final int STATE_CUSTOMER = -1;
 
     private View contentLayout;
 
@@ -76,7 +54,7 @@ public class StatusLayoutManager {
 
     private int defaultBackgroundColor;
 
-    private OnRetryListener onRetryListener;
+    private OnStatusChildClickListener onStatusChildClickListener;
 
     private ReplaceLayoutHelper replaceLayoutHelper;
 
@@ -109,7 +87,7 @@ public class StatusLayoutManager {
 
         this.defaultBackgroundColor = builder.defaultBackgroundColor;
 
-        this.onRetryListener = builder.onRetryListener;
+        this.onStatusChildClickListener = builder.onStatusChildClickListener;
 
         this.replaceLayoutHelper = new ReplaceLayoutHelper(contentLayout);
     }
@@ -183,7 +161,7 @@ public class StatusLayoutManager {
         }
         emptyLayout.setBackgroundColor(defaultBackgroundColor);
 
-        if (onRetryListener == null) {
+        if (onStatusChildClickListener == null) {
             return;
         }
 
@@ -196,7 +174,7 @@ public class StatusLayoutManager {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onRetryListener.onClick(STATE_EMPTY, view);
+                onStatusChildClickListener.onEmptyChildClick(view);
             }
         });
 
@@ -263,7 +241,7 @@ public class StatusLayoutManager {
         }
         errorLayout.setBackgroundColor(defaultBackgroundColor);
 
-        if (onRetryListener == null) {
+        if (onStatusChildClickListener == null) {
             return;
         }
 
@@ -276,7 +254,7 @@ public class StatusLayoutManager {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onRetryListener.onClick(STATE_ERROR, view);
+                onStatusChildClickListener.onErrorChildClick(view);
             }
         });
 
@@ -363,7 +341,7 @@ public class StatusLayoutManager {
      */
     public void showCustomLayout(@NonNull View customLayout, @IdRes int... retryID) {
         replaceLayoutHelper.showStatusLayout(customLayout);
-        if (onRetryListener == null) {
+        if (onStatusChildClickListener == null) {
             return;
         }
 
@@ -377,7 +355,7 @@ public class StatusLayoutManager {
             retryView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onRetryListener.onClick(STATE_CUSTOMER, view);
+                    onStatusChildClickListener.onCustomerChildClick(view);
                 }
             });
         }
@@ -430,7 +408,7 @@ public class StatusLayoutManager {
 
         private int defaultBackgroundColor;
 
-        private OnRetryListener onRetryListener;
+        private OnStatusChildClickListener onStatusChildClickListener;
 
         /**
          * 创建状态布局 Build 对象
@@ -750,8 +728,8 @@ public class StatusLayoutManager {
          * @param listener 重试事件监听器
          * @return 状态布局 Build 对象
          */
-        public Builder setOnRetryListener(OnRetryListener listener) {
-            this.onRetryListener = listener;
+        public Builder setOnStatusChildClickListener(OnStatusChildClickListener listener) {
+            this.onStatusChildClickListener = listener;
             return this;
         }
 

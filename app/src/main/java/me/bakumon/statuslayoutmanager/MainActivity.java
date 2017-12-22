@@ -1,6 +1,5 @@
 package me.bakumon.statuslayoutmanager;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import me.bakumon.statuslayoutmanager.library.OnRetryListener;
+import me.bakumon.statuslayoutmanager.library.OnStatusChildClickListener;
 import me.bakumon.statuslayoutmanager.library.StatusLayoutManager;
 
 /**
@@ -78,24 +76,29 @@ public class MainActivity extends AppCompatActivity {
 //                .setErrorRetryID(R.id.tv_error)
 
                 // 设置重试事件监听器
-                .setOnRetryListener(new OnRetryListener() {
+                .setOnStatusChildClickListener(new OnStatusChildClickListener() {
                     @Override
-                    public void onClick(int state, View view) {
-                        if (state == StatusLayoutManager.STATE_EMPTY) {
-                            ToastUtils.show(MainActivity.this, "空数据状态布局");
-                            statusLayoutManager.showLoadingLayout();
-                            getData(1000);
-                        } else if (state == StatusLayoutManager.STATE_ERROR) {
-                            ToastUtils.show(MainActivity.this, "出错状态布局");
-                            statusLayoutManager.showLoadingLayout();
-                            getData(1000);
-                        } else {
-                            if (view.getId() == R.id.tv_customer) {
-                                Toast.makeText(MainActivity.this, "申请权限", Toast.LENGTH_SHORT).show();
-                            } else if (view.getId() == R.id.tv_customer1) {
-                                Toast.makeText(MainActivity.this, "切换账号", Toast.LENGTH_SHORT).show();
-                            }
+                    public void onEmptyChildClick(View view) {
+                        ToastUtils.show(MainActivity.this, "空数据状态布局");
+                        statusLayoutManager.showLoadingLayout();
+                        getData(1000);
+                    }
+
+                    @Override
+                    public void onErrorChildClick(View view) {
+                        ToastUtils.show(MainActivity.this, "出错状态布局");
+                        statusLayoutManager.showLoadingLayout();
+                        getData(1000);
+                    }
+
+                    @Override
+                    public void onCustomerChildClick(View view) {
+                        if (view.getId() == R.id.tv_customer) {
+                            Toast.makeText(MainActivity.this, "申请权限", Toast.LENGTH_SHORT).show();
+                        } else if (view.getId() == R.id.tv_customer1) {
+                            Toast.makeText(MainActivity.this, "切换账号", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 })
                 .build();
