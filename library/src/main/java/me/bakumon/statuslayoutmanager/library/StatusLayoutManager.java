@@ -170,7 +170,7 @@ public class StatusLayoutManager {
             return;
         }
 
-        // 设置重试按钮点击时事件回调
+        // 设置点击按钮点击时事件回调
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -198,7 +198,7 @@ public class StatusLayoutManager {
         if (emptyClickViewTextView == null) {
             return;
         }
-        // 设置重试按钮的文本和可见性
+        // 设置点击按钮的文本和可见性
         if (isEmptyClickViewVisible) {
             emptyClickViewTextView.setVisibility(View.VISIBLE);
             if (!TextUtils.isEmpty(emptyClickViewText)) {
@@ -250,7 +250,7 @@ public class StatusLayoutManager {
             return;
         }
 
-        // 设置重试按钮点击时事件回调
+        // 设置点击按钮点击时事件回调
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -278,7 +278,7 @@ public class StatusLayoutManager {
         if (errorClickViewTextView == null) {
             return;
         }
-        // 设置重试按钮的文本和可见性
+        // 设置点击按钮的文本和可见性
         if (isErrorClickViewVisible) {
             errorClickViewTextView.setVisibility(View.VISIBLE);
             if (!TextUtils.isEmpty(errorClickViewText)) {
@@ -351,7 +351,7 @@ public class StatusLayoutManager {
                 return;
             }
 
-            // 设置重试按钮点击时事件回调
+            // 设置点击按钮点击时事件回调
             clickView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -365,7 +365,7 @@ public class StatusLayoutManager {
      * 显示自定义状态布局
      *
      * @param customLayoutID 自定义布局 ID
-     * @param clickViewID    重试按钮 ID
+     * @param clickViewID    点击按钮 ID
      */
     public View showCustomLayout(@LayoutRes int customLayoutID, @IdRes int... clickViewID) {
         View customLayout = inflate(customLayoutID);
@@ -421,10 +421,10 @@ public class StatusLayoutManager {
             this.loadingLayoutID = R.layout.layout_status_layout_manager_loading;
             this.emptyLayoutID = R.layout.layout_status_layout_manager_empty;
             this.errorLayoutID = R.layout.layout_status_layout_manager_error;
-            // 设置默认重试点击view id
+            // 设置默认点击点击view id
             this.emptyClickViewId = R.id.bt_status_empty_click;
             this.errorClickViewId = R.id.bt_status_error_click;
-            // 设置默认重试按钮属性
+            // 设置默认点击按钮属性
             this.isEmptyClickViewVisible = true;
             this.emptyClickViewTextColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_click_view_text_color);
             this.isErrorClickViewVisible = true;
@@ -509,9 +509,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置空数据布局重试按钮 ID
+         * 设置空数据布局点击按钮 ID
          *
-         * @param emptyClickViewResId 空数据布局重试按钮 ID
+         * @param emptyClickViewResId 空数据布局点击按钮 ID
          * @return 状态布局 Build 对象
          */
         public Builder setEmptyClickViewID(@IdRes int emptyClickViewResId) {
@@ -520,9 +520,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置默认空数据布局重试按钮文本
+         * 设置默认空数据布局点击按钮文本
          *
-         * @param emptyClickViewText 重试按钮文本
+         * @param emptyClickViewText 点击按钮文本
          * @return 状态布局 Build 对象
          */
         public Builder setDefaultEmptyClickViewText(String emptyClickViewText) {
@@ -531,9 +531,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置默认空数据布局重试按钮文本
+         * 设置默认空数据布局点击按钮文本
          *
-         * @param emptyClickViewTextID 重试按钮文本 ID
+         * @param emptyClickViewTextID 点击按钮文本 ID
          * @return 状态布局 Build 对象
          */
         public Builder setDefaultEmptyClickViewText(@StringRes int emptyClickViewTextID) {
@@ -542,9 +542,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置默认空数据布局重试按钮文本颜色
+         * 设置默认空数据布局点击按钮文本颜色
          *
-         * @param emptyClickViewTextColor 重试按钮文本颜色
+         * @param emptyClickViewTextColor 点击按钮文本颜色
          * @return 状态布局 Build 对象
          */
         public Builder setDefaultEmptyClickViewTextColor(int emptyClickViewTextColor) {
@@ -553,7 +553,7 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置默认空数据布局重试按钮是否可见
+         * 设置默认空数据布局点击按钮是否可见
          *
          * @param isEmptyClickViewVisible true：可见 false：不可见
          * @return 状态布局 Build 对象
@@ -624,9 +624,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置出错布局重试按钮 ID
+         * 设置出错布局点击按钮 ID
          *
-         * @param errorClickViewResId 出错布局重试按钮 ID
+         * @param errorClickViewResId 出错布局点击按钮 ID
          * @return 状态布局 Build 对象
          */
         public Builder setErrorClickViewID(@IdRes int errorClickViewResId) {
@@ -657,9 +657,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置默认出错布局重试按钮文本
+         * 设置默认出错布局点击按钮文本
          *
-         * @param errorClickViewText 重试按钮文本
+         * @param errorClickViewText 点击按钮文本
          * @return 状态布局 Build 对象
          */
         public Builder setDefaultErrorClickViewText(String errorClickViewText) {
@@ -668,9 +668,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置默认出错布局重试按钮文本
+         * 设置默认出错布局点击按钮文本
          *
-         * @param errorClickViewTextID 重试按钮文本 ID
+         * @param errorClickViewTextID 点击按钮文本 ID
          * @return 状态布局 Build 对象
          */
         public Builder setDefaultErrorClickViewText(@StringRes int errorClickViewTextID) {
@@ -679,9 +679,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置默认出错布局重试按钮文本颜色
+         * 设置默认出错布局点击按钮文本颜色
          *
-         * @param errorClickViewTextColor 重试按钮文本颜色
+         * @param errorClickViewTextColor 点击按钮文本颜色
          * @return 状态布局 Build 对象
          */
         public Builder setDefaultErrorClickViewTextColor(int errorClickViewTextColor) {
@@ -690,7 +690,7 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置出错布局重试按钮可见行
+         * 设置出错布局点击按钮可见行
          *
          * @param isErrorClickViewVisible true：可见 false：不可见
          * @return 状态布局 Build 对象
@@ -723,9 +723,9 @@ public class StatusLayoutManager {
         }
 
         /**
-         * 设置重试事件监听器
+         * 设置点击事件监听器
          *
-         * @param listener 重试事件监听器
+         * @param listener 点击事件监听器
          * @return 状态布局 Build 对象
          */
         public Builder setOnStatusChildClickListener(OnStatusChildClickListener listener) {

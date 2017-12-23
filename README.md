@@ -139,20 +139,20 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
 
 ## 显示自定义状态布局
 
-`statusLayoutManager()`有几个重载方法，下面以参数多的为例介绍：
+`statusLayoutManager#showCustomLayout()`有几个重载方法，下面以参数最多的为例介绍：
 
 ```java
 /**
  * 显示自定义状态布局
  *
  * @param customLayoutID 自定义布局 ID
- * @param retryID        重试按钮 ID
+ * @param clickViewID        重试按钮 ID
  * @return 自定义状态布局
  */
 statusLayoutManager.showCustomLayout(R.layout.layout_custome, R.id.tv_customer, R.id.tv_customer1);
 ```
 
-其中 `retryID` 参数，表示想要添加点击事件的 View 的 id。
+其中 `clickViewID` 参数，表示想要添加点击事件的 View 的 id。
 
 ## 点击监听
 
