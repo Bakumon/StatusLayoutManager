@@ -1,6 +1,7 @@
 # StatusLayoutManager
 
-[![Release](https://jitpack.io/v/User/Repo.svg)](https://jitpack.io/#Bakumon/StatusLayoutManager)
+[![Release](https://jitpack.io/v/Bakumon/StatusLayoutManager.svg)](https://jitpack.io/#Bakumon/StatusLayoutManager)
+[![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=11)
 
 切换不同的数据状态布局，包含加载中、空数据和出错状态。
 
