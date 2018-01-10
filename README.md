@@ -38,8 +38,7 @@ allprojects {
 dependencies {
     compile 'com.github.Bakumon:StatusLayoutManager:1.0.1'
 }
-```ls
-
+```
 
 ## 使用
 
