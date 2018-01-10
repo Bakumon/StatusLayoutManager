@@ -9,7 +9,7 @@
 
 ![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
 
-下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/StatusLayoutManager.apk) 体验
+下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk) 体验
 
 ## 特征
 
@@ -38,7 +38,8 @@ allprojects {
 dependencies {
     compile 'com.github.Bakumon:StatusLayoutManager:1.0.1'
 }
-```
+```ls
+
 
 ## 使用
 
