@@ -15,9 +15,9 @@
 
 ## 预览
 
-![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
-
 下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk) 体验
+
+![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
 
 ## 下载
 
