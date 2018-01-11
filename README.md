@@ -5,12 +5,6 @@
 
 切换不同的数据状态布局，包含加载中、空数据和出错状态。
 
-## 预览
-
-![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
-
-下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk) 体验
-
 ## 特征
 
 1. 不会增加布局层数
@@ -18,6 +12,12 @@
 3. 布局懒加载
 4. 重试按钮统一回调
 5. 支持自定义状态布局
+
+## 预览
+
+![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
+
+下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk) 体验
 
 ## 下载
 
