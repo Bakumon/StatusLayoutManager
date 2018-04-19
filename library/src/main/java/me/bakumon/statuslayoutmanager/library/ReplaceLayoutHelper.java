@@ -45,25 +45,41 @@ public class ReplaceLayoutHelper {
     private void getContentLayoutParams() {
         this.params = contentLayout.getLayoutParams();
         if (contentLayout.getParent() != null) {
+            // 有直接的父控件
             this.parentLayout = (ViewGroup) contentLayout.getParent();
         } else {
+            // 认为 contentLayout 是 activity 的跟布局
+            // 所以它的父控件就是 android.R.id.content
             this.parentLayout = contentLayout.getRootView().findViewById(android.R.id.content);
         }
-        int count = parentLayout.getChildCount();
-        for (int index = 0; index < count; index++) {
-            if (contentLayout == parentLayout.getChildAt(index)) {
-                // 获取 contentLayout 在 parentLayout 中的位置
-                this.viewIndex = index;
-                break;
+        if (parentLayout == null) {
+            // 以上两种方法还没有获取到父控件
+            // contentLayout 非 activity 的跟布局
+            // 父控件就是自己
+            if (contentLayout instanceof ViewGroup) {
+                parentLayout = (ViewGroup) contentLayout;
+                this.viewIndex = 0;
+            } else {
+                // 否则，contentLayout 是一个非 ViewGroup 的跟布局
+                // 该情况，没有办法替换布局，因此不支持
+                throw new IllegalStateException("参数错误：StatusLayoutManager#Build#with() 方法，不能传如一个非 ViewGroup 的跟布局");
+            }
+        } else {
+            int count = parentLayout.getChildCount();
+            for (int index = 0; index < count; index++) {
+                if (contentLayout == parentLayout.getChildAt(index)) {
+                    // 获取 contentLayout 在 parentLayout 中的位置
+                    this.viewIndex = index;
+                    break;
+                }
             }
         }
         this.currentLayout = this.contentLayout;
     }
 
-    public boolean showStatusLayout(View view) {
-        // 如果当前显示的布局不是 view，才进行替换
+    public void showStatusLayout(View view) {
         if (view == null) {
-            return false;
+            return;
         }
         if (currentLayout != view) {
             currentLayout = view;
@@ -75,13 +91,11 @@ public class ReplaceLayoutHelper {
             // 替换 = 移除 + 添加
             parentLayout.removeViewAt(viewIndex);
             parentLayout.addView(view, viewIndex, params);
-            return true;
         }
-        return false;
     }
 
-    public boolean restoreLayout() {
-        return showStatusLayout(contentLayout);
+    public void restoreLayout() {
+        showStatusLayout(contentLayout);
     }
 
 }
