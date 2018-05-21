@@ -36,7 +36,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.Bakumon:StatusLayoutManager:1.0.2'
+    compile 'com.github.Bakumon:StatusLayoutManager:1.0.3'
 }
 ```
 
