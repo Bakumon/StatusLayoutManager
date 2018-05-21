@@ -120,8 +120,9 @@ public class StatusLayoutManager {
     private void createLoadingLayout() {
         if (loadingLayout == null) {
             loadingLayout = inflate(loadingLayoutID);
+        } else {
+            loadingLayout.setBackgroundColor(defaultBackgroundColor);
         }
-        loadingLayout.setBackgroundColor(defaultBackgroundColor);
         if (!TextUtils.isEmpty(loadingText)) {
             TextView loadingTextView = loadingLayout.findViewById(R.id.tv_status_loading_content);
             if (loadingTextView != null) {
@@ -158,8 +159,9 @@ public class StatusLayoutManager {
     private void createEmptyLayout() {
         if (emptyLayout == null) {
             emptyLayout = inflate(emptyLayoutID);
+        } else {
+            emptyLayout.setBackgroundColor(defaultBackgroundColor);
         }
-        emptyLayout.setBackgroundColor(defaultBackgroundColor);
 
         if (onStatusChildClickListener == null) {
             return;
@@ -238,8 +240,9 @@ public class StatusLayoutManager {
     private void createErrorLayout() {
         if (errorLayout == null) {
             errorLayout = inflate(errorLayoutID);
+        } else {
+            errorLayout.setBackgroundColor(defaultBackgroundColor);
         }
-        errorLayout.setBackgroundColor(defaultBackgroundColor);
 
         if (onStatusChildClickListener == null) {
             return;
