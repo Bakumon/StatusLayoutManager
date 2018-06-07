@@ -36,7 +36,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.Bakumon:StatusLayoutManager:1.0.4'
+    implementation 'com.github.Bakumon:StatusLayoutManager:1.0.4'
 }
 ```
 
@@ -44,22 +44,10 @@ dependencies {
 
 ### 快速使用
 
-创建 `StatusLayoutManager` 对象:
+使用 `StatusLayoutManager#Builder` 创建 `StatusLayoutManager` 对象:
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
-    // 设置重试事件监听器
-    .setOnStatusChildClickListener(new DefaultOnStatusChildClickListener() {
-        @Override
-        public void onEmptyChildClick(View view) {
-
-        }
-
-        @Override
-        public void onErrorChildClick(View view) {
-
-        }
-    })
     .build();
 ```
 
@@ -110,7 +98,7 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     // 设置默认出错布局重试按钮是否显示
     .setDefaultErrorRetryVisible(true)
 
-    // 设置布局背景，包括加载中、空数据和出错布局
+    // 设置默认布局背景，包括加载中、空数据和出错布局
     .setDefaultLayoutsBackgroundColor(Color.WHITE)
     .build();
 ```
