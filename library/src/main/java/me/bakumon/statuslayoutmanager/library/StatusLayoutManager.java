@@ -21,6 +21,25 @@ import android.widget.TextView;
 
 public class StatusLayoutManager {
 
+    /**
+     * 三种默认布局 ID
+     */
+    private static final int DEFAULT_LOADING_LAYOUT_ID = R.layout.layout_status_layout_manager_loading;
+    private static final int DEFAULT_EMPTY_LAYOUT_ID = R.layout.layout_status_layout_manager_empty;
+    private static final int DEFAULT_ERROR_LAYOUT_ID = R.layout.layout_status_layout_manager_error;
+
+    /**
+     * 默认布局中可点击的 view ID
+     */
+    private static final int DEFAULT_EMPTY_CLICKED_ID = R.id.bt_status_empty_click;
+    private static final int DEFAULT_ERROR_CLICKED_ID = R.id.bt_status_error_click;
+
+    /**
+     * 默认颜色
+     */
+    private static final int DEFAULT_CLICKED_TEXT_COLOR = R.color.status_layout_click_view_text_color;
+    private static final int DEFAULT_BACKGROUND_COLOR = R.color.status_layout_background_color;
+
     private View contentLayout;
 
     @LayoutRes
@@ -120,7 +139,8 @@ public class StatusLayoutManager {
     private void createLoadingLayout() {
         if (loadingLayout == null) {
             loadingLayout = inflate(loadingLayoutID);
-        } else {
+        }
+        if (loadingLayoutID == DEFAULT_LOADING_LAYOUT_ID) {
             loadingLayout.setBackgroundColor(defaultBackgroundColor);
         }
         if (!TextUtils.isEmpty(loadingText)) {
@@ -159,26 +179,22 @@ public class StatusLayoutManager {
     private void createEmptyLayout() {
         if (emptyLayout == null) {
             emptyLayout = inflate(emptyLayoutID);
-        } else {
+        }
+        if (emptyLayoutID == DEFAULT_EMPTY_LAYOUT_ID) {
             emptyLayout.setBackgroundColor(defaultBackgroundColor);
         }
 
-        if (onStatusChildClickListener == null) {
-            return;
-        }
-
+        // 点击事件回调
         View view = emptyLayout.findViewById(emptyClickViewId);
-        if (view == null) {
-            return;
+        if (view != null && onStatusChildClickListener != null) {
+            // 设置点击按钮点击时事件回调
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onStatusChildClickListener.onEmptyChildClick(view);
+                }
+            });
         }
-
-        // 设置点击按钮点击时事件回调
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onStatusChildClickListener.onEmptyChildClick(view);
-            }
-        });
 
         // 设置默认空数据布局的提示文本
         if (!TextUtils.isEmpty(emptyText)) {
@@ -196,19 +212,18 @@ public class StatusLayoutManager {
             }
         }
 
-        TextView emptyClickViewTextView = emptyLayout.findViewById(R.id.bt_status_empty_click);
-        if (emptyClickViewTextView == null) {
-            return;
-        }
-        // 设置点击按钮的文本和可见性
-        if (isEmptyClickViewVisible) {
-            emptyClickViewTextView.setVisibility(View.VISIBLE);
-            if (!TextUtils.isEmpty(emptyClickViewText)) {
-                emptyClickViewTextView.setText(emptyClickViewText);
+        TextView emptyClickViewTextView = emptyLayout.findViewById(DEFAULT_EMPTY_CLICKED_ID);
+        if (emptyClickViewTextView != null) {
+            // 设置点击按钮的文本和可见性
+            if (isEmptyClickViewVisible) {
+                emptyClickViewTextView.setVisibility(View.VISIBLE);
+                if (!TextUtils.isEmpty(emptyClickViewText)) {
+                    emptyClickViewTextView.setText(emptyClickViewText);
+                }
+                emptyClickViewTextView.setTextColor(emptyClickViewTextColor);
+            } else {
+                emptyClickViewTextView.setVisibility(View.GONE);
             }
-            emptyClickViewTextView.setTextColor(emptyClickViewTextColor);
-        } else {
-            emptyClickViewTextView.setVisibility(View.GONE);
         }
     }
 
@@ -240,26 +255,21 @@ public class StatusLayoutManager {
     private void createErrorLayout() {
         if (errorLayout == null) {
             errorLayout = inflate(errorLayoutID);
-        } else {
+        }
+        if (errorLayoutID == DEFAULT_ERROR_LAYOUT_ID) {
             errorLayout.setBackgroundColor(defaultBackgroundColor);
         }
 
-        if (onStatusChildClickListener == null) {
-            return;
-        }
-
         View view = errorLayout.findViewById(errorClickViewId);
-        if (view == null) {
-            return;
+        if (view != null && onStatusChildClickListener != null) {
+            // 设置点击按钮点击时事件回调
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onStatusChildClickListener.onErrorChildClick(view);
+                }
+            });
         }
-
-        // 设置点击按钮点击时事件回调
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onStatusChildClickListener.onErrorChildClick(view);
-            }
-        });
 
         // 设置默认出错布局的提示文本
         if (!TextUtils.isEmpty(errorText)) {
@@ -277,19 +287,18 @@ public class StatusLayoutManager {
             }
         }
 
-        TextView errorClickViewTextView = errorLayout.findViewById(R.id.bt_status_error_click);
-        if (errorClickViewTextView == null) {
-            return;
-        }
-        // 设置点击按钮的文本和可见性
-        if (isErrorClickViewVisible) {
-            errorClickViewTextView.setVisibility(View.VISIBLE);
-            if (!TextUtils.isEmpty(errorClickViewText)) {
-                errorClickViewTextView.setText(errorClickViewText);
+        TextView errorClickViewTextView = errorLayout.findViewById(DEFAULT_ERROR_CLICKED_ID);
+        if (errorClickViewTextView != null) {
+            // 设置点击按钮的文本和可见性
+            if (isErrorClickViewVisible) {
+                errorClickViewTextView.setVisibility(View.VISIBLE);
+                if (!TextUtils.isEmpty(errorClickViewText)) {
+                    errorClickViewTextView.setText(errorClickViewText);
+                }
+                errorClickViewTextView.setTextColor(errorClickViewTextColor);
+            } else {
+                errorClickViewTextView.setVisibility(View.GONE);
             }
-            errorClickViewTextView.setTextColor(errorClickViewTextColor);
-        } else {
-            errorClickViewTextView.setVisibility(View.GONE);
         }
     }
 
@@ -421,19 +430,19 @@ public class StatusLayoutManager {
         public Builder(@NonNull View contentLayout) {
             this.contentLayout = contentLayout;
             // 设置默认布局
-            this.loadingLayoutID = R.layout.layout_status_layout_manager_loading;
-            this.emptyLayoutID = R.layout.layout_status_layout_manager_empty;
-            this.errorLayoutID = R.layout.layout_status_layout_manager_error;
+            this.loadingLayoutID = DEFAULT_LOADING_LAYOUT_ID;
+            this.emptyLayoutID = DEFAULT_EMPTY_LAYOUT_ID;
+            this.errorLayoutID = DEFAULT_ERROR_LAYOUT_ID;
             // 设置默认点击点击view id
-            this.emptyClickViewId = R.id.bt_status_empty_click;
-            this.errorClickViewId = R.id.bt_status_error_click;
+            this.emptyClickViewId = DEFAULT_EMPTY_CLICKED_ID;
+            this.errorClickViewId = DEFAULT_ERROR_CLICKED_ID;
             // 设置默认点击按钮属性
             this.isEmptyClickViewVisible = true;
-            this.emptyClickViewTextColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_click_view_text_color);
+            this.emptyClickViewTextColor = contentLayout.getContext().getResources().getColor(DEFAULT_CLICKED_TEXT_COLOR);
             this.isErrorClickViewVisible = true;
-            this.errorClickViewTextColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_click_view_text_color);
+            this.errorClickViewTextColor = contentLayout.getContext().getResources().getColor(DEFAULT_CLICKED_TEXT_COLOR);
             // 设置默认背景色
-            this.defaultBackgroundColor = contentLayout.getContext().getResources().getColor(R.color.status_layout_background_color);
+            this.defaultBackgroundColor = contentLayout.getContext().getResources().getColor(DEFAULT_BACKGROUND_COLOR);
         }
 
         ///////////////////////////////////////////
