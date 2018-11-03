@@ -5,23 +5,22 @@
     tools:context="me.bakumon.ugank.module.webview.WebViewActivity">
     <item
         android:id="@+id/menu_status_loading"
-        android:title="加载中"
-        app:showAsAction="never"/>
+        android:title="@string/loading"
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_status_empty"
-        android:title="空数据"
-        app:showAsAction="never"/>
+        android:title="@string/empty"
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_status_error"
-        android:title="出错"
-        app:showAsAction="never"/>
+        android:title="@string/error"
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_status_success"
-        android:title="加载成功"
-        app:showAsAction="never"/>
-
+        android:title="@string/success"
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_status_customer"
-        android:title="自定义状态布局"
-        app:showAsAction="never"/>
+        android:title="@string/customer"
+        app:showAsAction="never" />
 </menu>

@@ -17,7 +17,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:lineSpacingMultiplier="1.2"
-        android:text="对不起\n您暂时没有权限查看"
+        android:text="@string/customer_tip"
         android:textColor="#BEBEBE"
         android:textSize="16sp" />
 
@@ -34,7 +34,7 @@
             android:background="@drawable/selector_btn_blue"
             android:gravity="center"
             android:padding="10dp"
-            android:text="申请权限"
+            android:text="@string/request_access"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
@@ -45,7 +45,7 @@
             android:background="@drawable/selector_btn_blue"
             android:gravity="center"
             android:padding="10dp"
-            android:text="切换账号"
+            android:text="@string/switch_account"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
     </LinearLayout>

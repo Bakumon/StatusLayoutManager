@@ -4,4 +4,5 @@
     <string name="status_layout_manager_empty">还没有内容</string>
     <string name="status_layout_manager_error">似乎出了点问题</string>
     <string name="status_layout_manager_retry">重新加载</string>
+    <string name="with_illegal_argument">参数错误：StatusLayoutManager#Build#with() 方法，不能传一个非 ViewGroup 的根布局</string>
 </resources>

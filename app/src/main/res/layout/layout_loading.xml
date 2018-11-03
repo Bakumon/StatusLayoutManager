@@ -12,6 +12,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="加载中-自定义"
+        android:text="@string/loading_customer"
         android:textSize="14sp" />
 </LinearLayout>

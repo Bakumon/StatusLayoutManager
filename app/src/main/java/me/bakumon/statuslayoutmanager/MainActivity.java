@@ -80,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
                 .setOnStatusChildClickListener(new OnStatusChildClickListener() {
                     @Override
                     public void onEmptyChildClick(View view) {
-                        ToastUtils.show(MainActivity.this, "空数据状态布局");
+                        Toast.makeText(MainActivity.this, R.string.reload_empty, Toast.LENGTH_SHORT).show();
                         statusLayoutManager.showLoadingLayout();
                         getData(1000);
                     }
 
                     @Override
                     public void onErrorChildClick(View view) {
-                        ToastUtils.show(MainActivity.this, "出错状态布局");
+                        Toast.makeText(MainActivity.this, R.string.reload_error, Toast.LENGTH_SHORT).show();
                         statusLayoutManager.showLoadingLayout();
                         getData(1000);
                     }
@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCustomerChildClick(View view) {
                         if (view.getId() == R.id.tv_customer) {
-                            Toast.makeText(MainActivity.this, "申请权限", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, R.string.request_access, Toast.LENGTH_SHORT).show();
                         } else if (view.getId() == R.id.tv_customer1) {
-                            Toast.makeText(MainActivity.this, "切换账号", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, R.string.switch_account, Toast.LENGTH_SHORT).show();
                         }
 
                     }

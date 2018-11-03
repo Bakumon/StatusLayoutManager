@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">StatusLayoutManager</string>
+    <string name="loading">Loading</string>
+    <string name="empty">Empty</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+    <string name="customer">Customer</string>
+    <string name="customer_tip">Sorry,\nyou don\'t have permission to view it.</string>
+    <string name="request_access">Request</string>
+    <string name="switch_account">Switch</string>
+    <string name="empty_customer">Empty-customer</string>
+    <string name="error_customer">Error-customer</string>
+    <string name="loading_customer">Loading-customer</string>
+    <string name="reload_empty">Click Retry (empty)</string>
+    <string name="reload_error">Click Retry (error)</string>
+</resources>

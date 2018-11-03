@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">StatusLayoutManager</string>
+    <string name="loading">加载中</string>
+    <string name="empty">空数据</string>
+    <string name="error">出错</string>
+    <string name="success">加载成功</string>
+    <string name="customer">自定义状态布局</string>
+    <string name="customer_tip">对不起，\n您暂时没有权限查看</string>
+    <string name="request_access">申请权限</string>
+    <string name="switch_account">切换账号</string>
+    <string name="empty_customer">无数据-自定义</string>
+    <string name="error_customer">出错啦-自定义</string>
+    <string name="loading_customer">加载中-自定义</string>
+    <string name="reload_empty">点击重试（空数据）</string>
+    <string name="reload_error">点击重试（出错）</string>
 </resources>
