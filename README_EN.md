@@ -3,27 +3,27 @@
 [![Release](https://jitpack.io/v/Bakumon/StatusLayoutManager.svg)](https://jitpack.io/#Bakumon/StatusLayoutManager)
 [![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=11)
 
-中文版 | [English Version]((https://github.com/Bakumon/StatusLayoutManager/blob/master/README_EN.md))
+[中文版](https://github.com/Bakumon/StatusLayoutManager/blob/master/README.md) | English Version
 
-切换不同的数据状态布局，包含加载中、空数据和出错状态。
+Switch between different data state layouts, including loading medium and empty data and error status.
 
-## 特征
+## Feature
 
-1. 不会增加布局层数
-2. 提供一套可配置的默认状态布局
-3. 布局懒加载
-4. 重试按钮统一回调
-5. 支持自定义状态布局
+1. Does not increase the number of layout layers
+2. Provide a configurable default state layout
+3. Layout lazy loading
+4. Retry button unified callback
+5. Support custom state layout
 
-## 预览
+## Demo
 
-下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk) 体验
+Download [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk)
 
 ![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
 
-## 下载
+## Download
 
-1. 在项目的 `build.gradle` 中添加：
+1. project `build.gradle`:
 
 ```
 allprojects {
@@ -34,7 +34,7 @@ allprojects {
 }
 ```
 
-2. 添加依赖
+2. app `build.gradle`:
 
 ```
 dependencies {
@@ -42,117 +42,117 @@ dependencies {
 }
 ```
 
-## 使用
+## Usage & Examples
 
-### 快速使用
+### Getting started
 
-使用 `StatusLayoutManager#Builder` 创建 `StatusLayoutManager` 对象:
+Create a `StatusLayoutManager` object with `StatusLayoutManager#Builder`:
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     .build();
 ```
 
-在合适的时机显示对应的状态布局：
+Display the corresponding status layout at the right time:
 
 ```java
-// 加载中
+// Loading
 statusLayoutManager.showLoadingLayout();
-// 空数据
+// Empty data
 statusLayoutManager.showEmptyLayout();
-// 加载失败
+// Error
 statusLayoutManager.showErrorLayout();
-// 加载成功，显示原布局
+// success
 statusLayoutManager.showSuccessLayout();
 ```
 
-以上可以满足大多数场景。
+The above can satisfy most scenarios.
 
-### 配置默认布局
+### Configuring the default layout
 
-以下 API 提供修改默认布局的方法，具体说明见注释。
+The following APIs provide a way to modify the default layout.
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
 
-    // 设置默认加载中布局的提示文本
-    .setDefaultLoadingText("l拼命加载中...")
+    // Set the prompt text for the layout in the default load
+    .setDefaultLoadingText("loading...")
 
-    // 设置默认空数据布局的提示文本
-    .setDefaultEmptyText("空白了，哈哈哈哈")
-    // 设置默认空数据布局的图片
+    // Set the prompt text for the default empty data layout
+    .setDefaultEmptyText("Empty")
+    // Set the image of the default empty data layout
     .setDefaultEmptyImg(R.mipmap.ic_launcher)
-    // 设置默认空数据布局重试按钮的文本
+    // Set the text of the default empty data layout retry button
     .setDefaultEmptyRetryText("retry")
-    // 设置默认空数据布局重试按钮的文本颜色
+    // Set the text color of the default empty data layout retry button
     .setDefaultEmptyRetryTextColor(getResources().getColor(R.color.colorAccent))
-    // 设置默认空数据布局重试按钮是否显示
+    // Set the default empty data layout retry button to display
     .setDefaultEmptyRetryVisible(false)
 
-    // 设置默认出错布局的提示文本
+    // Set the prompt text for the default error layout
     .setDefaultErrorText(R.string.app_name)
-    // 设置默认出错布局的图片
+    // Set the image of the default error layout
     .setDefaultErrorImg(R.mipmap.ic_launcher)
-    // 设置默认出错布局重试按钮的文本
-    .setDefaultErrorRetryText("重试一波")
-    // 设置默认出错布局重试按钮的文本颜色
+    // Set the text of the default error layout retry button
+    .setDefaultErrorRetryText("Reload")
+    // Set the text color of the default error layout retry button
     .setDefaultErrorRetryTextColor(getResources().getColor(R.color.colorPrimaryDark))
-    // 设置默认出错布局重试按钮是否显示
+    // Set default error layout retry button to display
     .setDefaultErrorRetryVisible(true)
 
-    // 设置默认布局背景，包括加载中、空数据和出错布局
+    // Set the default layout background, including loading medium and empty data and error layout
     .setDefaultLayoutsBackgroundColor(Color.WHITE)
     .build();
 ```
 
-## 自定义默认布局
+## Custom default layout
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
-    // 设置加载中布局
+    // Set the layout in load
     .setLoadingLayout(inflate(R.layout.layout_loading))
-    // 设置空数据布局
+    // Set empty data layout
     .setEmptyLayout(inflate(R.layout.layout_empty))
-    // 设置出错布局
+    // Set the error layout
     .setErrorLayout(inflate(R.layout.layout_error))
 
-    // 设置加载中布局
+    // Set the layout in load
     .setLoadingLayout(R.layout.layout_loading)
-    // 设置空数据布局
+    // Set empty data layout
     .setEmptyLayout(R.layout.layout_empty)
-    // 设置出错布局
+    // Set the error layout
     .setErrorLayout(R.layout.layout_error)
 
-    // 设置空数据布局重试按钮 ID
+    // Set empty data layout retry button ID
     .setEmptyRetryID(R.id.tv_empty)
-    // 设置出错布局重试按钮 ID
+    // Set error layout retry button ID
     .setErrorRetryID(R.id.tv_error)
     .build();
 ```
 
-## 显示自定义状态布局
+## Show custom state layout
 
-`statusLayoutManager#showCustomLayout()`有几个重载方法，下面以参数最多的为例介绍：
+`statusLayoutManager#showCustomLayout()`There are several overloading methods. The following takes the most parameters as an example:
 
 ```java
 /**
- * 显示自定义状态布局
+ * Show custom state layout
  *
- * @param customLayoutID 自定义布局 ID
- * @param clickViewID        重试按钮 ID
- * @return 自定义状态布局
+ * @param customLayoutID Custom layout ID
+ * @param clickViewID        Retry button ID
+ * @return Custom state layout
  */
 statusLayoutManager.showCustomLayout(R.layout.layout_custome, R.id.tv_customer, R.id.tv_customer1);
 ```
 
-其中 `clickViewID` 参数，表示想要添加点击事件的 View 的 id。
+The `clickViewID` parameter indicates the id of the View to which you want to add a click event.
 
-## 点击监听
+## Click listener
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
 
-    // 设置重试事件监听器
+    // Set retry event listener
     .setOnStatusLayoutClickListener(new OnStatusLayoutClickListener() {
             @Override
             public void onEmptyChildClick(View view) {
@@ -173,11 +173,11 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     .build();
 ```
 
-也可以使用 `OnStatusLayoutClickListener` 默认的实现类，像下面这样：
+You can also use the default implementation class of `OnStatusLayoutClickListener` , like this:
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
-    // 设置重试事件监听器
+    // Set retry event listener
     .setOnStatusChildClickListener(new DefaultOnStatusChildClickListener() {
         @Override
         public void onEmptyChildClick(View view) {
