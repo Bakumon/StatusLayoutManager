@@ -11,16 +11,22 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        release {
-            storeFile file("key")
+        debug {
+            storeFile file("key_debug")
             storePassword "123456"
             keyAlias "key"
             keyPassword "123456"
         }
+        release {
+            storeFile file("key_release")
+            storePassword project.hasProperty('STOREPASS') ? STOREPASS : ''
+            keyAlias project.hasProperty('KEYALIAS') ? KEYALIAS : ''
+            keyPassword project.hasProperty('KEYPASS') ? KEYPASS : ''
+        }
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled false
