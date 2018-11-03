@@ -3,7 +3,7 @@
 [![Release](https://jitpack.io/v/Bakumon/StatusLayoutManager.svg)](https://jitpack.io/#Bakumon/StatusLayoutManager)
 [![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=11)
 
-中文版 | [English Version]((https://github.com/Bakumon/StatusLayoutManager/blob/master/README_EN.md))
+中文版 | [English Version](https://github.com/Bakumon/StatusLayoutManager/blob/master/README_EN.md)
 
 切换不同的数据状态布局，包含加载中、空数据和出错状态。
 
@@ -18,6 +18,8 @@
 ## 预览
 
 下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk) 体验
+
+<a href='https://play.google.com/store/apps/details?id=me.bakumon.statuslayoutmanager'><img alt='Get it on Google Play' src='https://i.loli.net/2018/06/27/5b32eac49f930.png' height="60"/>
 
 ![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
 
