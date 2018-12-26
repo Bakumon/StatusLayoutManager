@@ -1,5 +1,28 @@
+/*
+ * Copyright 2018 Bakumon. https://github.com/Bakumon
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package me.bakumon.statuslayoutmanager.library;
 
+import android.support.annotation.CheckResult;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -13,12 +36,11 @@ import android.widget.TextView;
 
 /**
  * 状态布局管理器
- * https://bakumon.me
  *
  * @author Bakumon
  * @date 2017/12/18
+ * @since v1.0.0
  */
-
 public class StatusLayoutManager {
 
     /**
@@ -124,6 +146,8 @@ public class StatusLayoutManager {
 
     /**
      * 显示原有布局
+     *
+     * @since v1.0.0
      */
     public void showSuccessLayout() {
         replaceLayoutHelper.restoreLayout();
@@ -155,6 +179,7 @@ public class StatusLayoutManager {
      * 获取加载中布局
      *
      * @return 加载中布局
+     * @since v1.0.0
      */
     public View getLoadingLayout() {
         createLoadingLayout();
@@ -163,6 +188,8 @@ public class StatusLayoutManager {
 
     /**
      * 显示加载中布局
+     *
+     * @since v1.0.0
      */
     public void showLoadingLayout() {
         createLoadingLayout();
@@ -231,6 +258,7 @@ public class StatusLayoutManager {
      * 获取空数据布局
      *
      * @return 空数据布局
+     * @since v1.0.0
      */
     public View getEmptyLayout() {
         createEmptyLayout();
@@ -239,6 +267,8 @@ public class StatusLayoutManager {
 
     /**
      * 显示空数据布局
+     *
+     * @since v1.0.0
      */
     public void showEmptyLayout() {
         createEmptyLayout();
@@ -306,6 +336,7 @@ public class StatusLayoutManager {
      * 获取出错布局
      *
      * @return 出错布局
+     * @since v1.0.0
      */
     public View getErrorLayout() {
         createErrorLayout();
@@ -314,6 +345,8 @@ public class StatusLayoutManager {
 
     /**
      * 显示出错布局
+     *
+     * @since v1.0.0
      */
     public void showErrorLayout() {
         createErrorLayout();
@@ -328,6 +361,7 @@ public class StatusLayoutManager {
      * 显示自定义状态布局
      *
      * @param customLayout 自定义布局
+     * @since v1.0.0
      */
     public void showCustomLayout(@NonNull View customLayout) {
         replaceLayoutHelper.showStatusLayout(customLayout);
@@ -338,6 +372,7 @@ public class StatusLayoutManager {
      *
      * @param customLayoutID 自定义状态布局 ID
      * @return 通过 customLayoutID 生成的 View
+     * @since v1.0.0
      */
     public View showCustomLayout(@LayoutRes int customLayoutID) {
         View customerView = inflate(customLayoutID);
@@ -350,6 +385,7 @@ public class StatusLayoutManager {
      *
      * @param customLayout 自定义布局
      * @param clickViewID  可点击 View ID
+     * @since v1.0.0
      */
     public void showCustomLayout(@NonNull View customLayout, @IdRes int... clickViewID) {
         replaceLayoutHelper.showStatusLayout(customLayout);
@@ -378,6 +414,7 @@ public class StatusLayoutManager {
      *
      * @param customLayoutID 自定义布局 ID
      * @param clickViewID    点击按钮 ID
+     * @since v1.0.0
      */
     public View showCustomLayout(@LayoutRes int customLayoutID, @IdRes int... clickViewID) {
         View customLayout = inflate(customLayoutID);
@@ -426,6 +463,7 @@ public class StatusLayoutManager {
          * 创建状态布局 Build 对象
          *
          * @param contentLayout 原有布局，内容布局
+         * @since v1.0.0
          */
         public Builder(@NonNull View contentLayout) {
             this.contentLayout = contentLayout;
@@ -454,6 +492,7 @@ public class StatusLayoutManager {
          *
          * @param loadingLayoutID 加载中布局 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setLoadingLayout(@LayoutRes int loadingLayoutID) {
             this.loadingLayoutID = loadingLayoutID;
@@ -465,6 +504,7 @@ public class StatusLayoutManager {
          *
          * @param loadingLayout 加载中布局
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setLoadingLayout(@NonNull View loadingLayout) {
             this.loadingLayout = loadingLayout;
@@ -476,6 +516,7 @@ public class StatusLayoutManager {
          *
          * @param loadingText 加载中布局提示文本
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultLoadingText(String loadingText) {
             this.loadingText = loadingText;
@@ -487,6 +528,7 @@ public class StatusLayoutManager {
          *
          * @param loadingTextStrID 加载中布局提示文本 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultLoadingText(@StringRes int loadingTextStrID) {
             this.loadingText = contentLayout.getContext().getResources().getString(loadingTextStrID);
@@ -503,6 +545,7 @@ public class StatusLayoutManager {
          *
          * @param emptyLayoutResId 空数据布局 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setEmptyLayout(@LayoutRes int emptyLayoutResId) {
             this.emptyLayoutID = emptyLayoutResId;
@@ -514,6 +557,7 @@ public class StatusLayoutManager {
          *
          * @param emptyLayout 空数据布局
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setEmptyLayout(@NonNull View emptyLayout) {
             this.emptyLayout = emptyLayout;
@@ -525,6 +569,7 @@ public class StatusLayoutManager {
          *
          * @param emptyClickViewResId 空数据布局点击按钮 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setEmptyClickViewID(@IdRes int emptyClickViewResId) {
             this.emptyClickViewId = emptyClickViewResId;
@@ -536,6 +581,7 @@ public class StatusLayoutManager {
          *
          * @param emptyClickViewText 点击按钮文本
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultEmptyClickViewText(String emptyClickViewText) {
             this.emptyClickViewText = emptyClickViewText;
@@ -547,6 +593,7 @@ public class StatusLayoutManager {
          *
          * @param emptyClickViewTextID 点击按钮文本 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultEmptyClickViewText(@StringRes int emptyClickViewTextID) {
             this.emptyClickViewText = contentLayout.getContext().getResources().getString(emptyClickViewTextID);
@@ -558,6 +605,7 @@ public class StatusLayoutManager {
          *
          * @param emptyClickViewTextColor 点击按钮文本颜色
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultEmptyClickViewTextColor(int emptyClickViewTextColor) {
             this.emptyClickViewTextColor = emptyClickViewTextColor;
@@ -569,6 +617,7 @@ public class StatusLayoutManager {
          *
          * @param isEmptyClickViewVisible true：可见 false：不可见
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultEmptyClickViewVisible(boolean isEmptyClickViewVisible) {
             this.isEmptyClickViewVisible = isEmptyClickViewVisible;
@@ -580,6 +629,7 @@ public class StatusLayoutManager {
          *
          * @param emptyImgID 空数据布局图片 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultEmptyImg(@DrawableRes int emptyImgID) {
             this.emptyImgID = emptyImgID;
@@ -595,6 +645,7 @@ public class StatusLayoutManager {
          *
          * @param emptyText 空数据布局提示文本
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultEmptyText(String emptyText) {
             this.emptyText = emptyText;
@@ -606,6 +657,7 @@ public class StatusLayoutManager {
          *
          * @param emptyTextStrID 空数据布局提示文本 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultEmptyText(@StringRes int emptyTextStrID) {
             this.emptyText = contentLayout.getContext().getResources().getString(emptyTextStrID);
@@ -618,6 +670,7 @@ public class StatusLayoutManager {
          *
          * @param errorLayoutResId 出错布局 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setErrorLayout(@LayoutRes int errorLayoutResId) {
             this.errorLayoutID = errorLayoutResId;
@@ -629,6 +682,7 @@ public class StatusLayoutManager {
          *
          * @param errorLayout 出错布局
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setErrorLayout(@NonNull View errorLayout) {
             this.errorLayout = errorLayout;
@@ -640,6 +694,7 @@ public class StatusLayoutManager {
          *
          * @param errorClickViewResId 出错布局点击按钮 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setErrorClickViewID(@IdRes int errorClickViewResId) {
             this.errorClickViewId = errorClickViewResId;
@@ -651,6 +706,7 @@ public class StatusLayoutManager {
          *
          * @param errorText 出错布局提示文本
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultErrorText(String errorText) {
             this.errorText = errorText;
@@ -662,6 +718,7 @@ public class StatusLayoutManager {
          *
          * @param errorTextStrID 出错布局提示文本 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultErrorText(@StringRes int errorTextStrID) {
             this.errorText = contentLayout.getContext().getResources().getString(errorTextStrID);
@@ -673,6 +730,7 @@ public class StatusLayoutManager {
          *
          * @param errorClickViewText 点击按钮文本
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultErrorClickViewText(String errorClickViewText) {
             this.errorClickViewText = errorClickViewText;
@@ -684,6 +742,7 @@ public class StatusLayoutManager {
          *
          * @param errorClickViewTextID 点击按钮文本 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultErrorClickViewText(@StringRes int errorClickViewTextID) {
             this.errorClickViewText = contentLayout.getContext().getResources().getString(errorClickViewTextID);
@@ -695,6 +754,7 @@ public class StatusLayoutManager {
          *
          * @param errorClickViewTextColor 点击按钮文本颜色
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultErrorClickViewTextColor(int errorClickViewTextColor) {
             this.errorClickViewTextColor = errorClickViewTextColor;
@@ -706,6 +766,7 @@ public class StatusLayoutManager {
          *
          * @param isErrorClickViewVisible true：可见 false：不可见
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultErrorClickViewVisible(boolean isErrorClickViewVisible) {
             this.isErrorClickViewVisible = isErrorClickViewVisible;
@@ -717,6 +778,7 @@ public class StatusLayoutManager {
          *
          * @param errorImgID 出错布局图片 ID
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultErrorImg(@DrawableRes int errorImgID) {
             this.errorImgID = errorImgID;
@@ -728,6 +790,7 @@ public class StatusLayoutManager {
          *
          * @param defaultBackgroundColor 默认布局的背景颜色
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setDefaultLayoutsBackgroundColor(int defaultBackgroundColor) {
             this.defaultBackgroundColor = defaultBackgroundColor;
@@ -739,6 +802,7 @@ public class StatusLayoutManager {
          *
          * @param listener 点击事件监听器
          * @return 状态布局 Build 对象
+         * @since v1.0.0
          */
         public Builder setOnStatusChildClickListener(OnStatusChildClickListener listener) {
             this.onStatusChildClickListener = listener;
@@ -749,8 +813,10 @@ public class StatusLayoutManager {
          * 创建状态布局管理器
          *
          * @return 状态布局管理器
+         * @since v1.0.0
          */
         @NonNull
+        @CheckResult
         public StatusLayoutManager build() {
             return new StatusLayoutManager(this);
         }
