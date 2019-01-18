@@ -198,7 +198,7 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
 
 #### 1. StatusLayoutManager#Builder(View view)：parameter requirements
 
-Since the principle of the library is to first get the `LayoutParams` of the view that needs to be replaced in the parent control, then remove the original layout by calling the parent control's `removeViewAt()` method, calling the parent control's `addView()` The method adds a new layout to achieve the purpose of switching layouts. So the parent control that is required to be replaced by `view` supports this approach. It is currently known that the refresh control such as `android.support.v4.widget.SwipeRefreshLayout` does not support this method. It is recommended to pass the `SwipeRefreshLayout` object directly as the `view` to be replaced to the `Builder` constructor.
+If you use `android.support.v4.widget.SwipeRefreshLayout`, it is recommended to pass the `SwipeRefreshLayout` object directly as the `view` to be replaced to the `Builder` constructor instead of its child view.
 
 ## License
 
