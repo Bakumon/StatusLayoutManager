@@ -198,7 +198,9 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
 
 #### 1. StatusLayoutManager#Builder(View view)：view 参数的要求
 
-由于该库的原理是，首先获取需要被替换的 view 在父控件中的 `LayoutParams`，然后通过调用父控件的 `removeViewAt()` 方法移除原有布局，调用父控件的 `addView()` 方法添加进去新的布局，来达到切换布局的目的。所以要求被替换 `view` 的父控件支持这种方式。目前已知`android.support.v4.widget.SwipeRefreshLayout` 等刷新控件不支持这种方式。建议直接把 `SwipeRefreshLayout` 对象当作要替换的 `view` 传递给 `Builder` 构造函数。
+由于该库的原理是，首先获取需要被替换的 view 在父控件中的 `LayoutParams`，然后通过调用父控件的 `removeViewAt()` 方法移除原有布局，调用父控件的 `addView()` 方法添加进去新的布局，来达到切换布局的目的。所以要求被替换 `view` 的父控件支持这种方式。
+
+目前已知`android.support.v4.widget.SwipeRefreshLayout` 等刷新控件不支持这种方式。建议直接把 `SwipeRefreshLayout` 对象当作要替换的 `view` 传递给 `Builder` 构造函数。
 
 ## License
 
