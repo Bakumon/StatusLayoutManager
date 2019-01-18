@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/status_layout_background_color"
+    android:background="#EBEBEB"
     android:gravity="center"
     android:orientation="vertical">
 
     <ImageView
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/customer_tip"
         android:src="@drawable/ic_network_error" />
 
     <TextView
@@ -30,7 +31,7 @@
             android:id="@+id/tv_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/selector_btn_blue"
             android:gravity="center"
             android:padding="10dp"

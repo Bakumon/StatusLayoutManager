@@ -2,21 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/status_layout_background_color"
+    android:background="@color/status_layout_manager_background_color"
     android:gravity="center"
     android:orientation="vertical">
 
     <ProgressBar
-        android:id="@+id/pb_status_loading"
+        android:id="@+id/status_layout_manager_pb_status_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/tv_status_loading_content"
+        android:id="@+id/status_layout_manager_tv_status_loading_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/status_layout_manager_loading"
-        android:textColor="@color/status_layout_tip_text_color"
+        android:textColor="@color/status_layout_manager_tip_text_color"
         android:textSize="16sp" />
 </LinearLayout>

@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Library</string>
-    <string name="status_layout_manager_loading">Loading...</string>
+    <string name="status_layout_manager_loading">Loading&#8230;</string>
     <string name="status_layout_manager_empty">Empty</string>
     <string name="status_layout_manager_error">Error</string>
     <string name="status_layout_manager_retry">Reload</string>
-    <string name="with_illegal_argument">Parameter error：StatusLayoutManager#Build#with()，The argument cannot be a root layout of a non-ViewGroup.</string>
+    <string name="status_layout_manager_with_illegal_argument">Parameter error：StatusLayoutManager#Build#with()，The argument cannot be a root layout of a non-ViewGroup.</string>
 </resources>

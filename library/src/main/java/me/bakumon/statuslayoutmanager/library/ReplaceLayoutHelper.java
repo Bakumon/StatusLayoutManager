@@ -84,7 +84,7 @@ public class ReplaceLayoutHelper {
             } else {
                 // 否则，contentLayout 是一个非 ViewGroup 的跟布局
                 // 该情况，没有办法替换布局，因此不支持
-                throw new IllegalArgumentException(contentLayout.getContext().getString(R.string.with_illegal_argument));
+                throw new IllegalArgumentException(contentLayout.getContext().getString(R.string.status_layout_manager_with_illegal_argument));
             }
         } else {
             int count = parentLayout.getChildCount();

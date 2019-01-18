@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="status_layout_background_color">#EBEBEB</color>
-    <color name="status_layout_tip_text_color">#BFBFBF</color>
-    <color name="status_layout_click_view_text_color">#0084FF</color>
+    <color name="status_layout_manager_background_color">#EBEBEB</color>
+    <color name="status_layout_manager_tip_text_color">#BFBFBF</color>
+    <color name="status_layout_manager_click_view_text_color">#0084FF</color>
 </resources>

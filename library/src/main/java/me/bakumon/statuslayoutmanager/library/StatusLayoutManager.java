@@ -53,14 +53,14 @@ public class StatusLayoutManager {
     /**
      * 默认布局中可点击的 view ID
      */
-    private static final int DEFAULT_EMPTY_CLICKED_ID = R.id.bt_status_empty_click;
-    private static final int DEFAULT_ERROR_CLICKED_ID = R.id.bt_status_error_click;
+    private static final int DEFAULT_EMPTY_CLICKED_ID = R.id.status_layout_manager_bt_status_empty_click;
+    private static final int DEFAULT_ERROR_CLICKED_ID = R.id.status_layout_manager_bt_status_error_click;
 
     /**
      * 默认颜色
      */
-    private static final int DEFAULT_CLICKED_TEXT_COLOR = R.color.status_layout_click_view_text_color;
-    private static final int DEFAULT_BACKGROUND_COLOR = R.color.status_layout_background_color;
+    private static final int DEFAULT_CLICKED_TEXT_COLOR = R.color.status_layout_manager_click_view_text_color;
+    private static final int DEFAULT_BACKGROUND_COLOR = R.color.status_layout_manager_background_color;
 
     private View contentLayout;
 
@@ -168,7 +168,7 @@ public class StatusLayoutManager {
             loadingLayout.setBackgroundColor(defaultBackgroundColor);
         }
         if (!TextUtils.isEmpty(loadingText)) {
-            TextView loadingTextView = loadingLayout.findViewById(R.id.tv_status_loading_content);
+            TextView loadingTextView = loadingLayout.findViewById(R.id.status_layout_manager_tv_status_loading_content);
             if (loadingTextView != null) {
                 loadingTextView.setText(loadingText);
             }
@@ -225,7 +225,7 @@ public class StatusLayoutManager {
 
         // 设置默认空数据布局的提示文本
         if (!TextUtils.isEmpty(emptyText)) {
-            TextView emptyTextView = emptyLayout.findViewById(R.id.tv_status_empty_content);
+            TextView emptyTextView = emptyLayout.findViewById(R.id.status_layout_manager_tv_status_empty_content);
             if (emptyTextView != null) {
                 emptyTextView.setText(emptyText);
             }
@@ -233,7 +233,7 @@ public class StatusLayoutManager {
 
         // 设置默认空数据布局的图片
         if (emptyImgID > 0) {
-            ImageView emptyImageView = emptyLayout.findViewById(R.id.iv_status_empty_img);
+            ImageView emptyImageView = emptyLayout.findViewById(R.id.status_layout_manager_iv_status_empty_img);
             if (emptyImageView != null) {
                 emptyImageView.setImageResource(emptyImgID);
             }
@@ -303,7 +303,7 @@ public class StatusLayoutManager {
 
         // 设置默认出错布局的提示文本
         if (!TextUtils.isEmpty(errorText)) {
-            TextView errorTextView = errorLayout.findViewById(R.id.tv_status_error_content);
+            TextView errorTextView = errorLayout.findViewById(R.id.status_layout_manager_tv_status_error_content);
             if (errorTextView != null) {
                 errorTextView.setText(errorText);
             }
@@ -311,7 +311,7 @@ public class StatusLayoutManager {
 
         // 设置默认出错布局的图片
         if (errorImgID > 0) {
-            ImageView errorImageView = errorLayout.findViewById(R.id.iv_status_error_image);
+            ImageView errorImageView = errorLayout.findViewById(R.id.status_layout_manager_iv_status_error_image);
             if (errorImageView != null) {
                 errorImageView.setImageResource(errorImgID);
             }
