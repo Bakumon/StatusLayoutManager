@@ -107,7 +107,7 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     .build();
 ```
 
-## Custom default layout
+### Custom default layout
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
@@ -132,7 +132,7 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     .build();
 ```
 
-## Show custom state layout
+### Show custom state layout
 
 `statusLayoutManager#showCustomLayout()`There are several overloading methods. The following takes the most parameters as an example:
 
@@ -149,7 +149,7 @@ statusLayoutManager.showCustomLayout(R.layout.layout_custome, R.id.tv_customer, 
 
 The `clickViewID` parameter indicates the id of the View to which you want to add a click event.
 
-## Click listener
+### onClick listener
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
@@ -193,3 +193,13 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     })
     .build();
 ```
+
+## Known issue
+
+#### 1. StatusLayoutManager#Builder(View view)：parameter requirements
+
+Since the principle of the library is to first get the `LayoutParams` of the view that needs to be replaced in the parent control, then remove the original layout by calling the parent control's `removeViewAt()` method, calling the parent control's `addView()` The method adds a new layout to achieve the purpose of switching layouts. So the parent control that is required to be replaced by `view` supports this approach. It is currently known that the refresh control such as `android.support.v4.widget.SwipeRefreshLayout` does not support this method. It is recommended to pass the `SwipeRefreshLayout` object directly as the `view` to be replaced to the `Builder` constructor.
+
+## License
+
+[MIT License](https://github.com/Bakumon/StatusLayoutManager/blob/master/LICENSE)
