@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/status_layout_manager_iv_status_empty_img"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/status_layout_manager_empty"
         android:src="@drawable/status_layout_manager_ic_empty" />
