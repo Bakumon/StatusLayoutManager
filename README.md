@@ -12,8 +12,8 @@
 1. 不会增加布局层数
 2. 提供一套可配置的默认状态布局
 3. 布局懒加载
-4. 重试按钮统一回调
-5. 支持自定义状态布局
+4. 重试按钮点击事件回调
+5. 可自由扩展其他状态布局
 
 ## 预览
 
@@ -48,7 +48,7 @@ dependencies {
 
 ### 快速使用
 
-使用 `StatusLayoutManager#Builder` 创建 `StatusLayoutManager` 对象:
+使用 `StatusLayoutManager#Builder` 创建 `StatusLayoutManager` 对象，`Builder` 构造函数的参数是在切换布局时被替换的 View。
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
@@ -107,7 +107,7 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     .build();
 ```
 
-## 自定义默认布局
+### 自定义默认布局
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
@@ -132,7 +132,7 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     .build();
 ```
 
-## 显示自定义状态布局
+### 显示自定义状态布局
 
 `statusLayoutManager#showCustomLayout()`有几个重载方法，下面以参数最多的为例介绍：
 
@@ -149,7 +149,7 @@ statusLayoutManager.showCustomLayout(R.layout.layout_custome, R.id.tv_customer, 
 
 其中 `clickViewID` 参数，表示想要添加点击事件的 View 的 id。
 
-## 点击监听
+### 点击监听
 
 ```java
 statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
@@ -193,3 +193,13 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
     })
     .build();
 ```
+
+## 已知问题
+
+#### 1. StatusLayoutManager#Builder(View view)：view 参数的要求
+
+由于该库的原理是，首先获取需要被替换的 view 在父控件中的 `LayoutParams`，然后通过调用父控件的 `removeViewAt()` 方法移除原有布局，调用父控件的 `addView()` 方法添加进去新的布局，来达到切换布局的目的。所以要求被替换 `view` 的父控件支持这种方式。目前已知`android.support.v4.widget.SwipeRefreshLayout` 等刷新控件不支持这种方式。建议直接把 `SwipeRefreshLayout` 对象当作要替换的 `view` 传递给 `Builder` 构造函数。
+
+## License
+
+[MIT License](https://github.com/Bakumon/StatusLayoutManager/blob/master/LICENSE)
