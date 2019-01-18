@@ -62,6 +62,12 @@ public class StatusLayoutManager {
     private static final int DEFAULT_CLICKED_TEXT_COLOR = R.color.status_layout_manager_click_view_text_color;
     private static final int DEFAULT_BACKGROUND_COLOR = R.color.status_layout_manager_background_color;
 
+    /**
+     * 默认图片
+     */
+    private static final int DEFAULT_EMPTY_IMG_ID = R.drawable.status_layout_manager_ic_empty;
+    private static final int DEFAULT_ERROR_IMG_ID = R.drawable.status_layout_manager_ic_error;
+
     private View contentLayout;
 
     @LayoutRes
@@ -232,11 +238,9 @@ public class StatusLayoutManager {
         }
 
         // 设置默认空数据布局的图片
-        if (emptyImgID > 0) {
-            ImageView emptyImageView = emptyLayout.findViewById(R.id.status_layout_manager_iv_status_empty_img);
-            if (emptyImageView != null) {
-                emptyImageView.setImageResource(emptyImgID);
-            }
+        ImageView emptyImageView = emptyLayout.findViewById(R.id.status_layout_manager_iv_status_empty_img);
+        if (emptyImageView != null) {
+            emptyImageView.setImageResource(emptyImgID);
         }
 
         TextView emptyClickViewTextView = emptyLayout.findViewById(DEFAULT_EMPTY_CLICKED_ID);
@@ -310,11 +314,9 @@ public class StatusLayoutManager {
         }
 
         // 设置默认出错布局的图片
-        if (errorImgID > 0) {
-            ImageView errorImageView = errorLayout.findViewById(R.id.status_layout_manager_iv_status_error_image);
-            if (errorImageView != null) {
-                errorImageView.setImageResource(errorImgID);
-            }
+        ImageView errorImageView = errorLayout.findViewById(R.id.status_layout_manager_iv_status_error_image);
+        if (errorImageView != null) {
+            errorImageView.setImageResource(errorImgID);
         }
 
         TextView errorClickViewTextView = errorLayout.findViewById(DEFAULT_ERROR_CLICKED_ID);
@@ -471,6 +473,9 @@ public class StatusLayoutManager {
             this.loadingLayoutID = DEFAULT_LOADING_LAYOUT_ID;
             this.emptyLayoutID = DEFAULT_EMPTY_LAYOUT_ID;
             this.errorLayoutID = DEFAULT_ERROR_LAYOUT_ID;
+            // 默认布局图片
+            this.emptyImgID = DEFAULT_EMPTY_IMG_ID;
+            this.errorImgID = DEFAULT_ERROR_IMG_ID;
             // 设置默认点击点击view id
             this.emptyClickViewId = DEFAULT_EMPTY_CLICKED_ID;
             this.errorClickViewId = DEFAULT_ERROR_CLICKED_ID;
