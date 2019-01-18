@@ -3,14 +3,13 @@ package me.bakumon.statuslayoutmanager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import me.bakumon.statuslayoutmanager.library.OnStatusChildClickListener;
@@ -28,17 +27,21 @@ public class MainActivity extends AppCompatActivity {
     private LayoutInflater inflater;
 
     private RecyclerView recyclerView;
-    private LinearLayout llRoot;
+    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        llRoot = findViewById(R.id.ll_root);
+        swipeRefresh = findViewById(R.id.swipeRefresh);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefresh.setRefreshing(false);
+            }
+        });
         recyclerView = findViewById(R.id.rv_content);
-
-        setupRecyclerView();
 
         setupStatusLayoutManager();
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupStatusLayoutManager() {
-        statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
+        statusLayoutManager = new StatusLayoutManager.Builder(swipeRefresh)
 
                 // 设置默认布局属性
 //                .setDefaultEmptyText("空白了，哈哈哈哈")
@@ -105,12 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
     }
 
-    private void setupRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-    }
-
-    private void getData(long time) {
-        llRoot.postDelayed(new Runnable() {
+    private void getData(final long time) {
+        getWindow().getDecorView().postDelayed(new Runnable() {
             @Override
             public void run() {
                 recyclerView.setAdapter(new SimpleRecyclerViewAdapter());
