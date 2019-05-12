@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="status_layout_manager_loading">加载中&#8230;</string>
+    <string name="status_layout_manager_empty">还没有内容</string>
+    <string name="status_layout_manager_error">似乎出了点问题</string>
+    <string name="status_layout_manager_retry">重新加载</string>
+</resources>

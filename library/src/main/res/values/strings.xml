@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="status_layout_manager_loading">加载中&#8230;</string>
-    <string name="status_layout_manager_empty">还没有内容</string>
-    <string name="status_layout_manager_error">似乎出了点问题</string>
-    <string name="status_layout_manager_retry">重新加载</string>
-    <string name="status_layout_manager_with_illegal_argument">参数错误：StatusLayoutManager#Build#with() 方法，不能传一个非 ViewGroup 的根布局</string>
+    <string name="status_layout_manager_loading">Loading&#8230;</string>
+    <string name="status_layout_manager_empty">Empty</string>
+    <string name="status_layout_manager_error">Error</string>
+    <string name="status_layout_manager_retry">Reload</string>
 </resources>
