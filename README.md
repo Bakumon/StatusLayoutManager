@@ -205,3 +205,7 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
 ## License
 
 [MIT License](https://github.com/Bakumon/StatusLayoutManager/blob/master/LICENSE)
+
+## 赞助
+
+[![Gitads.io](https://i.loli.net/2020/06/17/2SiZPMuoEQzjh1k.png)](https://tracking.gitads.io/?campaign=gitads&repo=StatusLayoutManager&redirect=gitads.io)
