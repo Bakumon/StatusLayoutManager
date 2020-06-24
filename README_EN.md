@@ -2,7 +2,7 @@
 
 [![Release](https://jitpack.io/v/Bakumon/StatusLayoutManager.svg)](https://jitpack.io/#Bakumon/StatusLayoutManager)
 [![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=11)
-[![Gitads.io](https://img.shields.io/badge/GitAds-valid-brightgreen)](https://tracking.gitads.io/?campaign=gitads&repo=StatusLayoutManager&redirect=gitads.io)
+[![Gitads.io](https://img.shields.io/badge/GitAds-valid-brightgreen)](https://images.gitads.io/StatusLayoutManager)
 
 [中文版](https://github.com/Bakumon/StatusLayoutManager/blob/master/README.md) | English Version
 
@@ -207,4 +207,4 @@ If you use `android.support.v4.widget.SwipeRefreshLayout`, it is recommended to 
 
 ## Sponsor
 
-[![Gitads.io](https://i.loli.net/2020/06/17/2SiZPMuoEQzjh1k.png)](https://tracking.gitads.io/?campaign=gitads&repo=StatusLayoutManager&redirect=gitads.io)
+[![Gitads.io](https://i.loli.net/2020/06/17/2SiZPMuoEQzjh1k.png)](https://images.gitads.io/StatusLayoutManager)
