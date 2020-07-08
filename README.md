@@ -4,6 +4,10 @@
 [![API](https://img.shields.io/badge/API-11%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=11)
 [![Gitads.io](https://img.shields.io/badge/GitAds-valid-brightgreen)](https://images.gitads.io/StatusLayoutManager)
 
+StatusLayoutManager is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
+
+<a href="https://tracking.gitads.io/?repo=StatusLayoutManager"><img src="https://images.gitads.io/StatusLayoutManager" alt="GitAds"/></a>
+
 中文版 | [English Version](https://github.com/Bakumon/StatusLayoutManager/blob/master/README_EN.md)
 
 切换不同的数据状态布局，包含加载中、空数据和出错状态。
