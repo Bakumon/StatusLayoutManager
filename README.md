@@ -6,8 +6,6 @@
 
 StatusLayoutManager is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
 
-<a href="https://tracking.gitads.io/?repo=StatusLayoutManager"><img src="https://images.gitads.io/StatusLayoutManager" alt="GitAds"/></a>
-
 中文版 | [English Version](https://github.com/Bakumon/StatusLayoutManager/blob/master/README_EN.md)
 
 切换不同的数据状态布局，包含加载中、空数据和出错状态。
@@ -211,6 +209,3 @@ statusLayoutManager = new StatusLayoutManager.Builder(recyclerView)
 
 [MIT License](https://github.com/Bakumon/StatusLayoutManager/blob/master/LICENSE)
 
-## 赞助
-
-[![Gitads.io](https://i.loli.net/2020/06/17/2SiZPMuoEQzjh1k.png)](https://images.gitads.io/StatusLayoutManager)
