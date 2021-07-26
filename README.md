@@ -22,8 +22,6 @@ StatusLayoutManager is being sponsored by the following tool; please help to sup
 
 下载 [demo](https://github.com/Bakumon/StatusLayoutManager/raw/master/apk/app-release.apk) 体验
 
-<a href='https://play.google.com/store/apps/details?id=me.bakumon.statuslayoutmanager'><img alt='Get it on Google Play' src='https://i.loli.net/2018/06/27/5b32eac49f930.png' height="60"/>
-
 ![status_layout_manager.gif](https://github.com/Bakumon/StatusLayoutManager/raw/master/gif/status_layout_manager.gif)
 
 ## 下载
